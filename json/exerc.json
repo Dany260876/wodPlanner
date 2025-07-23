@@ -1,0 +1,219 @@
+[
+  {
+    "id": 1001,
+    "nom": "Standard Push-Ups",
+    "categorie_id": 1,
+    "zone_du_corps_id": [1, 2, 3],
+    "difficulte_id": 1,
+    "description": "À plat ventre, mains à largeur d’épaules, fléchir puis étendre les bras."
+  },
+  {
+    "id": 1002,
+    "nom": "Diamond Push-Ups",
+    "categorie_id": 1,
+    "zone_du_corps_id": [2, 1],
+    "difficulte_id": 2,
+    "description": "Mains rapprochées en forme de losange sous la poitrine."
+  },
+  {
+    "id": 1003,
+    "nom": "Pike Push-Ups",
+    "categorie_id": 1,
+    "zone_du_corps_id": [3, 2],
+    "difficulte_id": 2,
+    "description": "Fesses hautes, tête vers le sol, fléchir les bras vers la tête."
+  },
+  {
+    "id": 1004,
+    "nom": "Bodyweight Squat",
+    "categorie_id": 1,
+    "zone_du_corps_id": [4, 5],
+    "difficulte_id": 1,
+    "description": "Pieds largeur épaules, fléchir les genoux jusqu’à 90°, puis remonter."
+  },
+  {
+    "id": 1005,
+    "nom": "Jump Squats",
+    "categorie_id": 1,
+    "zone_du_corps_id": [4, 5],
+    "difficulte_id": 2,
+    "description": "Squat suivi d’un saut explosif."
+  },
+  {
+    "id": 1006,
+    "nom": "Lunges",
+    "categorie_id": 1,
+    "zone_du_corps_id": [6, 5],
+    "difficulte_id": 1,
+    "description": "Un pied en avant, fléchir les deux genoux, remonter, changer de jambe."
+  },
+  {
+    "id": 1007,
+    "nom": "Bulgarian Split Squat",
+    "categorie_id": 1,
+    "zone_du_corps_id": [4, 5],
+    "difficulte_id": 2,
+    "description": "Pied arrière surélevé, squat sur la jambe avant."
+  },
+  {
+    "id": 1008,
+    "nom": "Plank",
+    "categorie_id": 1,
+    "zone_du_corps_id": [9, 11],
+    "difficulte_id": 1,
+    "description": "Position gainage, poids sur avant-bras et pointe des pieds."
+  },
+  {
+    "id": 1009,
+    "nom": "Side Plank",
+    "categorie_id": 1,
+    "zone_du_corps_id": [10],
+    "difficulte_id": 2,
+    "description": "Gainage latéral, sur un avant-bras, aligner corps droit."
+  },
+  {
+    "id": 1010,
+    "nom": "Mountain Climbers",
+    "categorie_id": 1,
+    "zone_du_corps_id": [11, 18],
+    "difficulte_id": 2,
+    "description": "Position planche, ramener un genou puis l’autre rapidement."
+  },
+  {
+    "id": 1011,
+    "nom": "Burpees",
+    "categorie_id": 1,
+    "zone_du_corps_id": [17, 18],
+    "difficulte_id": 2,
+    "description": "Squat, planche, pompe, saut, le tout enchaîné."
+  },
+  {
+    "id": 1012,
+    "nom": "Superman",
+    "categorie_id": 1,
+    "zone_du_corps_id": [12],
+    "difficulte_id": 1,
+    "description": "Allongé, lever bras et jambes simultanément."
+  },
+  {
+    "id": 2001,
+    "nom": "Dumbbell Bench Press",
+    "categorie_id": 2,
+    "zone_du_corps_id": [1, 2],
+    "difficulte_id": 2,
+    "description": "Allongé, appuyer les haltères verticalement depuis la poitrine."
+  },
+  {
+    "id": 2002,
+    "nom": "Incline Dumbbell Bench Press",
+    "categorie_id": 2,
+    "zone_du_corps_id": [1, 3],
+    "difficulte_id": 2,
+    "description": "Même mouvement que le bench press, sur banc incliné."
+  },
+  {
+    "id": 2003,
+    "nom": "Dumbbell Chest Fly",
+    "categorie_id": 2,
+    "zone_du_corps_id": [1],
+    "difficulte_id": 2,
+    "description": "Allongé, bras écartés en arc, ramener les haltères au-dessus de la poitrine."
+  },
+  {
+    "id": 2004,
+    "nom": "Dumbbell Row",
+    "categorie_id": 2,
+    "zone_du_corps_id": [13, 14],
+    "difficulte_id": 2,
+    "description": "Buste penché, tirer les haltères vers la hanche."
+  },
+  {
+    "id": 2005,
+    "nom": "Dumbbell Romanian Deadlift",
+    "categorie_id": 2,
+    "zone_du_corps_id": [7, 12],
+    "difficulte_id": 2,
+    "description": "Jambes presque tendues, descendre les haltères le long des jambes."
+  },
+  {
+    "id": 2006,
+    "nom": "Goblet Squat",
+    "categorie_id": 2,
+    "zone_du_corps_id": [4, 5],
+    "difficulte_id": 2,
+    "description": "Haltère tenu à deux mains contre la poitrine, réaliser un squat."
+  },
+  {
+    "id": 2007,
+    "nom": "Dumbbell Lunges",
+    "categorie_id": 2,
+    "zone_du_corps_id": [6, 5],
+    "difficulte_id": 2,
+    "description": "En fente, un haltère dans chaque main, alterner les jambes."
+  },
+  {
+    "id": 2008,
+    "nom": "Standing Dumbbell Shoulder Press",
+    "categorie_id": 2,
+    "zone_du_corps_id": [3],
+    "difficulte_id": 2,
+    "description": "Debout, presser les haltères au-dessus de la tête."
+  },
+  {
+    "id": 2009,
+    "nom": "Dumbbell Lateral Raise",
+    "categorie_id": 2,
+    "zone_du_corps_id": [3],
+    "difficulte_id": 1,
+    "description": "Debout, bras tendus sur les côtés avec haltères."
+  },
+  {
+    "id": 2010,
+    "nom": "Dumbbell Biceps Curl",
+    "categorie_id": 2,
+    "zone_du_corps_id": [15],
+    "difficulte_id": 1,
+    "description": "Bras au long du corps, fléchir les coudes pour rapprocher les haltères."
+  },
+  {
+    "id": 2011,
+    "nom": "Dumbbell Hammer Curl",
+    "categorie_id": 2,
+    "zone_du_corps_id": [16, 15],
+    "difficulte_id": 1,
+    "description": "Même mouvement que curl, mais les paumes se font face."
+  },
+  {
+    "id": 2012,
+    "nom": "Dumbbell Triceps Kickback",
+    "categorie_id": 2,
+    "zone_du_corps_id": [2],
+    "difficulte_id": 2,
+    "description": "Buste penché, tendre le bras vers l’arrière."
+  },
+  {
+    "id": 2013,
+    "nom": "Dumbbell Overhead Triceps Extension",
+    "categorie_id": 2,
+    "zone_du_corps_id": [2],
+    "difficulte_id": 2,
+    "description": "Haltère tenu à deux mains au-dessus de la tête, fléchir puis étendre."
+  },
+  {
+    "id": 2014,
+    "nom": "Dumbbell Calf Raise",
+    "categorie_id": 2,
+    "zone_du_corps_id": [8],
+    "difficulte_id": 1,
+    "description": "Debout, monter sur la pointe des pieds en tenant des haltères."
+  },
+  {
+    "id": 2015,
+    "nom": "Dumbbell Renegade Row to Knee Tuck",
+    "categorie_id": 2,
+    "zone_du_corps_id": [11, 13],
+    "difficulte_id": 3,
+    "description": "Position planche, ranger un haltère, en ramener le genou opposé devant."
+  }
+]
+
