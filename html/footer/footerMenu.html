@@ -1,0 +1,19 @@
+<table class='tblFooterMenu'>
+    <tr>
+        <td><button id='btnExercices'>Exercices</button></td>
+        <td><button id='btnWod'>WOD</button></td>
+        <td><button id='btnStats'>Stats</button></td>
+    </tr>
+</table>
+<script>
+    $('#btnExercices').click(function() {    
+        pageManager.renderFooter("footerMenuExercices");
+        pageManager.renderPage("exoPage");
+    });
+    $('#btnWod').click(function() {
+        console.log('btnWod');
+    });
+    $('#btnStats').click(function() {
+        console.log('btnStats');
+    });
+</script>

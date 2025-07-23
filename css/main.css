@@ -1,0 +1,31 @@
+/* Main page */
+.tblContent {
+    width: 100%;
+    height: 100%;
+}
+.trHeader, .trFooter {
+    background-color: #eeeeee;
+    width: 100%;
+    height: 35px;
+}
+.trContent {
+    background-color: #ffffff;
+    width: 100%;
+    text-align: left;
+    top: revert;
+}
+.trContent td {
+    align-content: baseline;
+}
+
+/* Footer */
+.tblFooterMenu {
+    width: 100%
+}
+.tblFooterMenu td {
+    width: 33%
+}
+.tblFooterMenu button {
+    width: 100%;
+    height: 25px;
+}

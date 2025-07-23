@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nom": "Facile"
+  },
+  {
+    "id": 2,
+    "nom": "Intermédiaire"
+  },
+  {
+    "id": 3,
+    "nom": "Avancé"
+  }
+]

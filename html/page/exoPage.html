@@ -1,0 +1,23 @@
+<table>
+    <tr>
+        <td>Difficulté :</td><td id='tdSelectDiff'></td>
+    </tr>
+    <tr>
+        <td>Type d'exercice :</td><td id='tdSelectCateg'></td>
+    </tr>
+    <tr>
+        <td>Zone du corps :</td><td id='tdSelectZones'></td>
+    </tr>
+</table>
+<div id='divResultsExercices'></div>
+<script>
+    dataManager.getCategories().done((data) => {
+        pageManager.renderElement('selectElement', data, 'tdSelectCateg'); 
+    });
+    dataManager.getDifficultes().done((data) => {
+        pageManager.renderElement('selectElement', data, 'tdSelectDiff'); 
+    });
+    dataManager.getZones().done((data) => {
+        pageManager.renderElement('selectElement', data, 'tdSelectZones'); 
+    });
+</script>
