@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nom": "Poids du corps",
+    "description": "Exercices utilisant uniquement le poids du corps, sans équipement."
+  },
+  {
+    "id": 2,
+    "nom": "Haltères",
+    "description": "Exercices réalisés avec des haltères pour ajouter de la résistance."
+  }
+]

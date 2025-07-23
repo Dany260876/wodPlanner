@@ -1,0 +1,20 @@
+[
+  { "id": 1, "nom": "Pectoraux" },
+  { "id": 2, "nom": "Triceps" },
+  { "id": 3, "nom": "Épaules" },
+  { "id": 4, "nom": "Jambes" },
+  { "id": 5, "nom": "Fessiers" },
+  { "id": 6, "nom": "Quadriceps" },
+  { "id": 7, "nom": "Ischios" },
+  { "id": 8, "nom": "Mollets" },
+  { "id": 9, "nom": "Abdominaux" },
+  { "id": 10, "nom": "Obliques" },
+  { "id": 11, "nom": "Tronc" },
+  { "id": 12, "nom": "Bas du dos" },
+  { "id": 13, "nom": "Dos" },
+  { "id": 14, "nom": "Lats" },
+  { "id": 15, "nom": "Biceps" },
+  { "id": 16, "nom": "Brachialis" },
+  { "id": 17, "nom": "Full body" },
+  { "id": 18, "nom": "Cardio" }
+]
