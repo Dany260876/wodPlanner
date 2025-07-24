@@ -48,7 +48,7 @@ var templateHelper = {
 		for (n=0;n<objectList.length;n++) {
 			var props = Object.getOwnPropertyNames(objectList[n]);
 			for (i=0; i<props.length; i++) {
-				var replaceString = "[" + objectList[n].tagName + "." + props[i]+ "]";
+				var replaceString = "[" + objectList[n].tagName + "." + props[i] + "]";
 				var value = objectList[n][props[i]];
 				tempHtml = tempHtml.replace(replaceString, value);
 			}
