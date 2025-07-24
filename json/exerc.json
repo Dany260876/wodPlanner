@@ -97,7 +97,7 @@
   },
   {
     "id": 2001,
-    "nom": "Dumbbell Bench Press",
+    "nom": "Bench Press",
     "categorie_id": 2,
     "zone_du_corps_id": [1, 2],
     "difficulte_id": 2,
@@ -105,7 +105,7 @@
   },
   {
     "id": 2002,
-    "nom": "Incline Dumbbell Bench Press",
+    "nom": "Incline Bench Press",
     "categorie_id": 2,
     "zone_du_corps_id": [1, 3],
     "difficulte_id": 2,
@@ -113,7 +113,7 @@
   },
   {
     "id": 2003,
-    "nom": "Dumbbell Chest Fly",
+    "nom": "Chest Fly",
     "categorie_id": 2,
     "zone_du_corps_id": [1],
     "difficulte_id": 2,
@@ -121,7 +121,7 @@
   },
   {
     "id": 2004,
-    "nom": "Dumbbell Row",
+    "nom": "Row",
     "categorie_id": 2,
     "zone_du_corps_id": [13, 14],
     "difficulte_id": 2,
@@ -129,7 +129,7 @@
   },
   {
     "id": 2005,
-    "nom": "Dumbbell Romanian Deadlift",
+    "nom": "Romanian Deadlift",
     "categorie_id": 2,
     "zone_du_corps_id": [7, 12],
     "difficulte_id": 2,
@@ -145,7 +145,7 @@
   },
   {
     "id": 2007,
-    "nom": "Dumbbell Lunges",
+    "nom": "Lunges",
     "categorie_id": 2,
     "zone_du_corps_id": [6, 5],
     "difficulte_id": 2,
@@ -153,7 +153,7 @@
   },
   {
     "id": 2008,
-    "nom": "Standing Dumbbell Shoulder Press",
+    "nom": "Standing Shoulder Press",
     "categorie_id": 2,
     "zone_du_corps_id": [3],
     "difficulte_id": 2,
@@ -161,7 +161,7 @@
   },
   {
     "id": 2009,
-    "nom": "Dumbbell Lateral Raise",
+    "nom": "Lateral Raise",
     "categorie_id": 2,
     "zone_du_corps_id": [3],
     "difficulte_id": 1,
@@ -169,7 +169,7 @@
   },
   {
     "id": 2010,
-    "nom": "Dumbbell Biceps Curl",
+    "nom": "Biceps Curl",
     "categorie_id": 2,
     "zone_du_corps_id": [15],
     "difficulte_id": 1,
@@ -177,7 +177,7 @@
   },
   {
     "id": 2011,
-    "nom": "Dumbbell Hammer Curl",
+    "nom": "Hammer Curl",
     "categorie_id": 2,
     "zone_du_corps_id": [16, 15],
     "difficulte_id": 1,
@@ -185,7 +185,7 @@
   },
   {
     "id": 2012,
-    "nom": "Dumbbell Triceps Kickback",
+    "nom": "Triceps Kickback",
     "categorie_id": 2,
     "zone_du_corps_id": [2],
     "difficulte_id": 2,
@@ -193,7 +193,7 @@
   },
   {
     "id": 2013,
-    "nom": "Dumbbell Overhead Triceps Extension",
+    "nom": "Overhead Triceps Extension",
     "categorie_id": 2,
     "zone_du_corps_id": [2],
     "difficulte_id": 2,
@@ -201,7 +201,7 @@
   },
   {
     "id": 2014,
-    "nom": "Dumbbell Calf Raise",
+    "nom": "Calf Raise",
     "categorie_id": 2,
     "zone_du_corps_id": [8],
     "difficulte_id": 1,
@@ -209,7 +209,7 @@
   },
   {
     "id": 2015,
-    "nom": "Dumbbell Renegade Row to Knee Tuck",
+    "nom": "Renegade Row to Knee Tuck",
     "categorie_id": 2,
     "zone_du_corps_id": [11, 13],
     "difficulte_id": 3,
