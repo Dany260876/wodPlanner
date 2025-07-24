@@ -6,7 +6,13 @@
 .trHeader, .trFooter {
     background-color: #eeeeee;
     width: 100%;
-    height: 35px;
+    height: 30px;
+}
+.trHeader {
+    height: 30px;
+}
+.trFooter {
+     height: 50px;
 }
 .trContent {
     background-color: #ffffff;
@@ -27,9 +33,14 @@
 }
 .tblFooterMenu button {
     width: 100%;
-    height: 25px;
+    height: 45px;
 }
 
 #tdContent select {
     width: 150px;
+}
+
+#divResultsExercices {
+    overflow: scroll;
+    height: 80%;
 }
