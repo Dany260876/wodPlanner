@@ -1,3 +1,8 @@
+/* Global */ 
+* {
+    font-family: monospace;
+}
+
 /* Main page */
 .tblContent {
     width: 100%;
@@ -12,16 +17,15 @@
     height: 30px;
 }
 .trFooter {
-     height: 50px;
+    height: 50px;
 }
 .trContent {
     background-color: #ffffff;
     width: 100%;
     text-align: left;
-    top: revert;
 }
-.trContent td {
-    align-content: baseline;
+#tdContent {
+    vertical-align: baseline;
 }
 
 /* Footer */
@@ -43,4 +47,27 @@
 #divResultsExercices {
     overflow: scroll;
     height: 80%;
+    width: 100%;
+}
+.tblSearch {
+    width:100%;
+}
+.tdButtonClearSearch {
+    text-align:right;
+}
+.trHeaderResults {
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+.tblResults {
+    width: 100%;
+}
+.tblResults td {
+    border-bottom-style: solid;
+    border-bottom-color: #ececec;
+    border-bottom-width: 1px;
+    text-transform: uppercase;
+}
+.tblResults tr {
+    height: 30px;
 }

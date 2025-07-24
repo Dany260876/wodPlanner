@@ -1,8 +1,14 @@
-<table>
+<table class='tblResults'>
+    <tr class='trHeaderResults'>
+        <td>Nom</td>
+        <td>Catégorie</td>
+        <td>Difficulté</td>
+    </tr>
     [[
         <tr>
-            <td>[object.id]</td>
             <td>[object.nom]</td>
+            <td data-categ=[object.categorie_id]></td>
+            <td data-diff=[object.difficulte_id]></td>
         </tr>
     ]]
 </table>

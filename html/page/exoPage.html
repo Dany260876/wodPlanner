@@ -1,4 +1,4 @@
-<table>
+<table class='tblSearch'>
     <tr>
         <td>Type d'exercice :</td><td id='tdSelectCateg'></td>
     </tr>
@@ -6,7 +6,7 @@
         <td>Zone du corps :</td><td id='tdSelectZones'></td>
     </tr>
     <tr>
-        <td>Difficulté :</td><td id='tdSelectDiff'></td>
+        <td>Difficulté :</td><td id='tdSelectDiff'></td><td class='tdButtonClearSearch'><button id='btnClearSearch'>Clear</td>
     </tr>
 </table>
 <hr/>
@@ -23,5 +23,11 @@
     dataManager.getZones().done((data) => {
         data.splice(0,0,new Zone(-1,"-"));
         pageManager.renderElement('selectElement', data, 'tdSelectZones'); 
+    });
+
+    $('#btnClearSearch').click(() => {
+        $('#tdSelectCateg select').val(-1);
+        $('#tdSelectZones select').val(-1);
+        $('#tdSelectDiff select').val(-1);
     });
 </script>
