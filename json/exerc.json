@@ -74,16 +74,16 @@
   {
     "id": 1010,
     "nom": "Mountain Climbers",
-    "categorie_id": 1,
-    "zone_du_corps_id": [11, 18],
+    "categorie_id": 3,
+    "zone_du_corps_id": [11],
     "difficulte_id": 2,
     "description": "Position planche, ramener un genou puis l’autre rapidement."
   },
   {
     "id": 1011,
     "nom": "Burpees",
-    "categorie_id": 1,
-    "zone_du_corps_id": [17, 18],
+    "categorie_id": 3,
+    "zone_du_corps_id": [17],
     "difficulte_id": 2,
     "description": "Squat, planche, pompe, saut, le tout enchaîné."
   },

@@ -1,23 +1,27 @@
 <table>
     <tr>
-        <td>Difficulté :</td><td id='tdSelectDiff'></td>
-    </tr>
-    <tr>
         <td>Type d'exercice :</td><td id='tdSelectCateg'></td>
     </tr>
     <tr>
         <td>Zone du corps :</td><td id='tdSelectZones'></td>
     </tr>
+    <tr>
+        <td>Difficulté :</td><td id='tdSelectDiff'></td>
+    </tr>
 </table>
+<hr/>
 <div id='divResultsExercices'></div>
 <script>
     dataManager.getCategories().done((data) => {
+        data.splice(0,0,new Categorie(-1,"-", "-"));
         pageManager.renderElement('selectElement', data, 'tdSelectCateg'); 
     });
     dataManager.getDifficultes().done((data) => {
+        data.splice(0,0,new Difficulte(-1,"-"));
         pageManager.renderElement('selectElement', data, 'tdSelectDiff'); 
     });
     dataManager.getZones().done((data) => {
+        data.splice(0,0,new Zone(-1,"-"));
         pageManager.renderElement('selectElement', data, 'tdSelectZones'); 
     });
 </script>
