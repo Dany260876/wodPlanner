@@ -11,7 +11,25 @@
        pageManager.renderFooter("footerMenu");
     });
     $('#btnSearchEx').click(function() {
-        console.log('btnSearchEx');
+
+        // Search exercices
+        dataManager.getExercices().done(function(listExercices) {
+
+            // Get filter values
+            var filterDiffId = $('#tdSelectDiff select').val()*1;
+            var filterCategId = $('#tdSelectCateg select').val()*1;
+            var filterZoneId = $('#tdSelectZones select').val()*1;
+
+            // filter results
+            var results = listExercices;
+            results = filterManager.filterExercices(results, filterCategId, 'categ');
+            results = filterManager.filterExercices(results, filterDiffId, 'diff');
+            results = filterManager.filterExercices(results, filterZoneId, 'zone');
+
+            // Display results
+            pageManager.renderElement('tableElement', results, 'divResultsExercices');
+        });
+        
     });
     $('#btnCreateEx').click(function() {
         console.log('btnCreateEx');
