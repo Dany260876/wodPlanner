@@ -29,3 +29,7 @@
     width: 100%;
     height: 25px;
 }
+
+#tdContent select {
+    width: 150px;
+}

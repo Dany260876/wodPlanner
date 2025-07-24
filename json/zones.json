@@ -15,6 +15,5 @@
   { "id": 14, "nom": "Lats" },
   { "id": 15, "nom": "Biceps" },
   { "id": 16, "nom": "Brachialis" },
-  { "id": 17, "nom": "Full body" },
-  { "id": 18, "nom": "Cardio" }
+  { "id": 17, "nom": "Full body" }
 ]

@@ -8,5 +8,10 @@
     "id": 2,
     "nom": "Haltères",
     "description": "Exercices réalisés avec des haltères pour ajouter de la résistance."
+  },
+  {
+    "id": 3,
+    "nom": "Cardio",
+    "description": "Exercices réalisés en cardio pour brûler des calories"
   }
 ]

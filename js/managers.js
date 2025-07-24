@@ -30,7 +30,7 @@ var dataManager = {
 	        var jsonData = [];
 	        data.forEach((d) => { 
                 if (name=='categ') jsonData.push(new Categorie(d.id, d.nom, d.description));
-                if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte, d.description));
+                if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description));
                 if (name=='diff') jsonData.push(new Difficulte(d.id, d.nom));
                 if (name=='zones') jsonData.push(new Zone(d.id, d.nom));
 	        });
@@ -53,4 +53,20 @@ var dataManager = {
     getZones: () => {
         return dataManager.getDataFromJson('zones');
 	},
+}
+
+/*
+* filter manager : filter data
+*/
+var filterManager = {
+	filterExercices: (list, id, field) => {
+		var results = [];
+		if (id<0) return list;
+		list.forEach((e) => { 
+			if (field=='categ' && e.categorie_id==id) results.push(e);
+			if (field=='diff' && e.difficulte_id==id) results.push(e);
+			if (field=='zone' && e.zone_du_corps_id.indexOf(id)>-1) results.push(e);
+		});
+		return results;
+	}
 }
