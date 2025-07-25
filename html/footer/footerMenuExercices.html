@@ -1,8 +1,8 @@
 <table class='tblFooterMenu'>
     <tr>
-        <td><button id='btnHome'>Accueil</button></td>
-        <td><button id='btnSearchEx'>Rechercher</button></td>
-        <td><button id='btnCreateEx'>Créer</button></td>
+        <td><button class='imgButton' id='btnHome'></button></td>
+        <td><button class='imgButton' id='btnSearchEx'></button></td>
+        <td><button class='imgButton' id='btnCreateEx'></button></td>
     </tr>
 </table>
 <script>
@@ -27,9 +27,9 @@
             results = filterManager.filterExercices(results, filterZoneId, 'zone');
 
             // Display results
-            pageManager.renderElement('tableElement', results, 'divResultsExercices').done(function(html) {
+            pageManager.renderElement('listElement', results, 'divResultsExercices').done(function(html) {
                // Replace ids with values
-                $('.tblResults td').each(function(){
+                $('.ulResults td').each(function(){
                     var data = $(this).data();
                     if (data) {
                         if (data.categ) {

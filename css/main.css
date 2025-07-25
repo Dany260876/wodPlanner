@@ -55,11 +55,30 @@
 .tdButtonClearSearch {
     text-align:right;
 }
-.trHeaderResults {
-    font-weight: bold;
-    background-color: whitesmoke;
+button {
+    border-width: thin;
+    border-color: lightgray;
 }
-.tblResults {
+.imgButton {
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: center;
+}
+#btnClearSearch {
+    background-image: url("../res/delete.png");
+    width: 26px;   
+    height: 20px;
+}
+#btnHome {
+    background-image: url("../res/home.png");
+}
+#btnSearchEx {
+    background-image: url("../res/search.png");
+}
+#btnCreateEx {
+    background-image: url("../res/add.png");
+}
+.tblResults .ulResults {
     width: 100%;
 }
 .tblResults td {
@@ -70,4 +89,25 @@
 }
 .tblResults tr {
     height: 30px;
+}
+
+.ulResults table {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.ulResults li {
+    border-bottom-style: solid;
+    border-bottom-color: whitesmoke;
+    border-bottom-width: 1px;
+    height: 45px;
+    width: 100%;
+    list-style-type: disclosure-closed;
+}
+.tdResultMain {
+    text-transform: uppercase;
+}
+.tdResultShort {
+    width: 50%;
+    font-size: x-small;
 }
