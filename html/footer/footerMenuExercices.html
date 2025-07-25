@@ -1,8 +1,8 @@
 <table class='tblFooterMenu'>
     <tr>
-        <td><button class='imgButton' id='btnHome'></button></td>
-        <td><button class='imgButton' id='btnSearchEx'></button></td>
-        <td><button class='imgButton' id='btnCreateEx'></button></td>
+        <td><button class='imgButtonBig' id='btnHome'>Accueil</button></td>
+        <td><button class='imgButtonBig' id='btnSearchEx'>Rechercher</button></td>
+        <td><button class='imgButtonBig' id='btnCreateEx'>Créer</button></td>
     </tr>
 </table>
 <script>
@@ -11,42 +11,7 @@
        pageManager.renderFooter("footerMenu");
     });
     $('#btnSearchEx').click(() => {
-
-        // Search exercices
-        dataManager.getExercices().done(function(listExercices) {
-
-            // Get filter values
-            var filterDiffId = $('#tdSelectDiff select').val()*1;
-            var filterCategId = $('#tdSelectCateg select').val()*1;
-            var filterZoneId = $('#tdSelectZones select').val()*1;
-
-            // filter results
-            var results = listExercices;
-            results = filterManager.filterExercices(results, filterCategId, 'categ');
-            results = filterManager.filterExercices(results, filterDiffId, 'diff');
-            results = filterManager.filterExercices(results, filterZoneId, 'zone');
-
-            // Display results
-            pageManager.renderElement('listElement', results, 'divResultsExercices').done(function(html) {
-               // Replace ids with values
-                $('.ulResults td').each(function(){
-                    var data = $(this).data();
-                    if (data) {
-                        if (data.categ) {
-                            dataManager.getCategorie(data.categ).done((item) => {
-                               $(this).html(item.nom); 
-                            });
-                        }
-                        if (data.diff) {
-                            dataManager.getDifficulte(data.diff).done((item) => {
-                               $(this).html(item.nom); 
-                            });
-                        }
-                    }
-                }); 
-            });
-        });
-        
+        exoPage.searchExercices();        
     });
     $('#btnCreateEx').click(() => {
         console.log('btnCreateEx');
