@@ -17,7 +17,7 @@
     height: 30px;
 }
 .trFooter {
-    height: 50px;
+    height: 70px;
 }
 .trContent {
     background-color: #ffffff;
@@ -37,7 +37,7 @@
 }
 .tblFooterMenu button {
     width: 100%;
-    height: 45px;
+    height: 60px;
 }
 
 #tdContent select {
@@ -45,9 +45,10 @@
 }
 
 #divResultsExercices {
-    overflow: scroll;
-    height: 80%;
+    height: 85%;
     width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .tblSearch {
     width:100%;
@@ -66,10 +67,10 @@ button {
 }
 .imgButtonBig {
     background-repeat: no-repeat;
-    background-size: 20px;
+    background-size: 30px;
     font-size: x-small;
-    padding-top: 24px;
-    background-position-y: 6px;
+    padding-top: 35px;
+    background-position-y: 8px;
     background-position-x: center;
 }
 #btnClearSearch {
