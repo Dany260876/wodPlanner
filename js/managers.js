@@ -41,6 +41,24 @@ var pageManager = {
 * Data Manager : get data from json
 */
 var dataManager = {
+	getDataFromStorage: (name) => {
+		var result = $.Deferred();
+		var dataString = window.sessionStorage.getItem(name);
+		if (!dataString) 
+			result.reject();	 
+		else {
+			var jsonData = JSON.parse(dataString);
+			var listData = [];
+			jsonData.forEach((d) => { 
+				if (name=='categ') listData.push(new Categorie(d.id, d.nom, d.description));
+				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description));
+				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
+				if (name=='zones') listData.push(new Zone(d.id, d.nom));
+			});
+			result.resolve(listData);
+		}
+		return result.promise();
+	},
     getDataFromJson: (name) => {
         var result = $.Deferred();
 		$.getJSON("json/"+ name +".json", function(data) {
@@ -52,6 +70,7 @@ var dataManager = {
 				if (name=='diff') jsonData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') jsonData.push(new Zone(d.id, d.nom));
 			});
+			window.sessionStorage.setItem(name, JSON.stringify(jsonData));
 			result.resolve(jsonData);
 		})
 		.fail(function() {
@@ -91,7 +110,7 @@ var dataManager = {
 		});
 		return result.promise();
 	}
-}
+};
 
 /*
 * filter manager : filter data
@@ -107,4 +126,16 @@ var filterManager = {
 		});
 		return results;
 	}
-}
+};
+
+/*
+* Popin Manager : display popin
+*/
+var popinManager = {
+	show: (name, data) => {
+		console.log(data);
+	},
+	hide: () => {
+		$("#divPopin").hide();
+	}
+};
