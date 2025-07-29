@@ -23,6 +23,8 @@ var templateHelper = {
 			.done(function(data) {
 				if (data==null) result.reject(null);
 				var html = data;
+				
+				// replace objects properties
 				if (objectList!=null) {
 					var pos = html.indexOf("[[");
 					if (pos>=0) {
@@ -30,19 +32,23 @@ var templateHelper = {
 						pos = subHtml.indexOf("]]");
 						subHtml = subHtml.substring(0, pos);
 						html = html.replace(subHtml, "");
-						var resultHtml = templateHelper.BuildHtmlFromObjects(subHtml, objectList, true);
+						var resultHtml = templateHelper.buildHtmlFromObjects(subHtml, objectList, true);
 						html = html.replace("[[]]", resultHtml);	
 					}
 					else {
-						html = templateHelper.BuildHtmlFromObjects(html, objectList, false);
+						html = templateHelper.buildHtmlFromObjects(html, objectList, false);
 					}
 				}
+				
+				// execute methods contents ([{}])
+				html = templateHelper.executeMethodsContent(html);
+				
 				result.resolve(html);
 			});
 		return result.promise();
 	},
 	// Build html from objects props
-	BuildHtmlFromObjects: (html, objectList, concat) => {
+	buildHtmlFromObjects: (html, objectList, concat) => {
 		var resultHtml = "";
 		var tempHtml = html;
 		for (n=0;n<objectList.length;n++) {
@@ -60,5 +66,32 @@ var templateHelper = {
 				resultHtml = tempHtml;
 		}
 		return resultHtml;
+	},
+	executeMethodsContent:(html) => {
+		var iPosFuncStart = html.indexOf('[{');
+		while(iPosFuncStart>-1) {
+			// Get function name & params
+			var funcName = html.substring(iPosFuncStart+2);
+			var iPosFuncEnd = funcName.indexOf('}]');
+			funcName = funcName.substring(0, iPosFuncEnd);
+			var iPosParamStart = funcName.indexOf('(');
+			var paramName = funcName.substring(iPosParamStart+1);
+			var iPosParamEnd = paramName.indexOf(')');
+			paramName = paramName.substring(0, iPosParamEnd);
+			funcName = funcName.substring(0, iPosParamStart);
+			
+			// execute function
+			var arrayFuncName = funcName.split('.');
+			var resultHtml = '';
+			if (arrayFuncName.length==1) resultHtml = window[arrayFuncName[0]](paramName);
+			if (arrayFuncName.length==2) resultHtml = window[arrayFuncName[0]][arrayFuncName[1]](paramName);
+	
+			// replace content with result value
+			html = html.replace("[{" + funcName + '(' + paramName + ')}]', resultHtml);
+	
+			// try again
+			iPosFuncStart = html.indexOf('[{');
+		}
+		return html;
 	}
 };
