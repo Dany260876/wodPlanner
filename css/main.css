@@ -1,15 +1,19 @@
-/* Global */ 
+/* 
+* Global 
+*/ 
 * {
     font-family: monospace;
 }
 
-/* Main page */
+/* 
+* Main page 
+*/
 .tblContent {
     width: 100%;
     height: 100%;
 }
 .trHeader, .trFooter {
-    background-color: #eeeeee;
+    background-color: #f3f3f3;
     width: 100%;
     height: 30px;
 }
@@ -27,8 +31,14 @@
 #tdContent {
     vertical-align: baseline;
 }
+#tdContent select {
+    width: 150px;
+}
 
-/* Footer */
+/* 
+* Footer 
+*/
+
 .tblFooterMenu {
     width: 100%
 }
@@ -40,10 +50,10 @@
     height: 60px;
 }
 
-#tdContent select {
-    width: 150px;
-}
 
+/*
+* Exercices Page
+*/
 #divResultsExercices {
     height: 85%;
     width: 100%;
@@ -64,19 +74,19 @@ button {
     background-repeat: no-repeat;
     background-size: 12px;
     background-position: center;
+    width: 22px;   
+    height: 20px;
 }
 .imgButtonBig {
     background-repeat: no-repeat;
     background-size: 30px;
     font-size: x-small;
-    padding-top: 35px;
+    padding-top: 40px;
     background-position-y: 8px;
     background-position-x: center;
 }
 #btnClearSearch {
     background-image: url("../res/delete.png");
-    width: 26px;   
-    height: 20px;
 }
 #btnHome {
     background-image: url("../res/home.png");
@@ -110,18 +120,18 @@ button {
 }
 .ulResults {
     position: relative;
-    left: -40px;
+    left: -30px;
 }
 .ulResults table {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .ulResults li {
     border-bottom-style: solid;
     border-bottom-color: whitesmoke;
     border-bottom-width: 1px;
-    height: 45px;
+    height: 55px;
     width: 100%;
     list-style-type: none;
 }
@@ -132,4 +142,49 @@ button {
 .tdResultShort {
     width: 50%;
     font-size: small;
+}
+.tdResultEmpty {
+    width: 0px;
+}
+#btnShowDetails {
+    background-image: url("../res/view.png");
+}
+
+/*
+* Popin
+*/
+#divPopin {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+    z-index: 9999;
+}
+.tblPopin {
+    width: 100%;
+    height: 100%;
+    border-style: groove;
+    border-width: 1px;
+    border-color: lightgrey;
+    margin: 2px;
+}
+.trPopinContent {
+    text-align: left;
+    vertical-align: baseline;
+}
+.trPopinFooter {
+    height: 70px;
+    text-align: center;
+    background-color: #efefef;
+}
+.trPopinHeader {
+    height: 30px;
+    background-color: #efefef;
+}
+#btnPopinFermer {
+    background-image: url("../res/apply.png");
+    height: 60px;
+    width: 60px;
 }

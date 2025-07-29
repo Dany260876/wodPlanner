@@ -79,37 +79,59 @@ var dataManager = {
 		return result.promise();
     },
 	getCategories: () => {
-		return dataManager.getDataFromJson('categ');
+		return dataManager.getDataFromStorage('categ');
 	},
 	getExercices: () => {
-		return dataManager.getDataFromJson('exerc');
+		return dataManager.getDataFromStorage('exerc');
 	},
     getDifficultes: () => {
-		return dataManager.getDataFromJson('diff');
+		return dataManager.getDataFromStorage('diff');
 	},
     getZones: () => {
-		return dataManager.getDataFromJson('zones');
+		return dataManager.getDataFromStorage('zones');
 	},
 	getCategorie: (id) => {
 		var result = $.Deferred();
 		dataManager.getCategories().done((data) => {
+			var itemFound = null;
 			data.forEach((item, index, arr) => {
-				if (item.id==id) result.resolve(item);
+				if (item.id==id) itemFound = item;
 			});
-			result.reject(null);
+			if (itemFound)
+				result.resolve(itemFound);
+			else
+				result.reject(null);
 		});
 		return result.promise();
 	},
 	getDifficulte: (id) => {
 		var result = $.Deferred();
 		dataManager.getDifficultes().done((data) => {
+			var itemFound = null;
 			data.forEach((item, index, arr) => {
-				if (item.id==id) result.resolve(item);
+				if (item.id==id) itemFound = item;
 			});
-			result.reject(null);
+			if (itemFound)
+				result.resolve(itemFound);
+			else
+				result.reject(null);
 		});
 		return result.promise();
-	}
+	},
+	getExercice: (id) => {
+		var result = $.Deferred();
+		dataManager.getExercices().done((data) => {
+			var itemFound = null;
+			data.forEach((item, index, arr) => {
+				if (item.id==id) itemFound = item;
+			});
+			if (itemFound)
+				result.resolve(itemFound);
+			else
+				result.reject(null);
+		});
+		return result.promise();
+	},
 };
 
 /*
@@ -133,7 +155,15 @@ var filterManager = {
 */
 var popinManager = {
 	show: (name, data) => {
-		console.log(data);
+		pageManager.renderElement('popinElement', null, 'divPopin').done((html) => {
+			dataManager.getExercice(data).done((objExercice) => {
+				var paramObj = [];
+				paramObj.push(objExercice);
+				pageManager.renderElement(name, paramObj, 'tdPopinContent').done((html) => {
+					$("#divPopin").show();
+				});
+			});		
+		});
 	},
 	hide: () => {
 		$("#divPopin").hide();
