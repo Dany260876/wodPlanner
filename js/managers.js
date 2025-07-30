@@ -154,18 +154,17 @@ var filterManager = {
 * Popin Manager : display popin
 */
 var popinManager = {
-	show: (name, data) => {
-		pageManager.renderElement('popinElement', null, 'divPopin').done((html) => {
-			dataManager.getExercice(data).done((objExercice) => {
-				var paramObj = [];
-				paramObj.push(objExercice);
-				pageManager.renderElement(name, paramObj, 'tdPopinContent').done((html) => {
-					$("#divPopin").show();
-				});
-			});		
-		});
+	show: (type) => {
+		var popinName = '';
+		if (type=='OK') popinName = 'popinElementOK';
+		if (type=='OKCancel') popinName = 'popinElementOKCancel';		
+		return pageManager.renderElement(popinName, null, 'divPopin');
 	},
 	hide: () => {
+		$("#divPopin").html("");
 		$("#divPopin").hide();
+	},
+	validate: () => {
+		console.log('validate');
 	}
 };
