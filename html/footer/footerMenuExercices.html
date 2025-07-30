@@ -14,9 +14,26 @@
         exoPage.searchExercices();        
     });
     $('#btnCreateEx').click(() => {
-        popinManager.show('OKCancel').done(() => {
+        popinManager.load('OKCancel').done(() => {
             pageManager.renderElement('popinCreateExerc', null, 'tdPopinContent').done(() => {
-                $("#divPopin").show();
+                // add values to select
+                var get1 = dataManager.getCategories();
+                var get2 = dataManager.getDifficultes();
+                var get3 = dataManager.getZones();
+                $.when(get1, get2, get3).done((data1, data2, data3) => {
+                    $(data1).each(function() {
+                        $("#selCateg").append("<option value='" + this.id + "'>" + this.nom + "</option>");
+                    });
+                    $(data2).each(function() {
+                        $("#selDiff").append("<option value='" + this.id + "'>" + this.nom + "</option>");
+                    });
+                    $(data3).each(function() {
+                        $("#selZone").append("<option value='" + this.id + "'>" + this.nom + "</option>");
+                    });
+                });
+                // display popin
+                popinManager.setCallbackFunction("exoPage.validateCreatePopin()");
+                popinManager.show();
             });
         });
     });
