@@ -78,6 +78,18 @@
                     }); 
                 });
             });
+        },
+        // Show popin exercice details
+        showDetailPopin: (id) => {
+            popinManager.show('OK').done(() => {
+                dataManager.getExercice(id).done((objExercice) => {
+    				var paramObj = [];
+    				paramObj.push(objExercice);
+    				pageManager.renderElement('popinDetailExerc', paramObj, 'tdPopinContent').done((html) => {
+    					$("#divPopin").show();
+    				});
+    			});
+            });
         }
     }
     

@@ -14,6 +14,10 @@
         exoPage.searchExercices();        
     });
     $('#btnCreateEx').click(() => {
-        console.log('btnCreateEx');
+        popinManager.show('OKCancel').done(() => {
+            pageManager.renderElement('popinCreateExerc', null, 'tdPopinContent').done(() => {
+                $("#divPopin").show();
+            });
+        });
     });
 </script>
