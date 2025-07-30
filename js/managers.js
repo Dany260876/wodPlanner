@@ -43,15 +43,19 @@ var pageManager = {
 var dataManager = {
 	getDataFromStorage: (name) => {
 		var result = $.Deferred();
+		// get data from storage (session then local)
 		var dataString = window.sessionStorage.getItem(name);
+		if (!dataString) dataString = window.localStorage.getItem(name);
+		// Convert & return data
 		if (!dataString) 
-			result.reject();	 
+			result.resolve(null);	 
 		else {
 			var jsonData = JSON.parse(dataString);
 			var listData = [];
 			jsonData.forEach((d) => { 
 				if (name=='categ') listData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description));
+				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false));
+				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true));
 				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') listData.push(new Zone(d.id, d.nom));
 			});
@@ -66,7 +70,7 @@ var dataManager = {
 			var jsonData = [];
 			data.forEach((d) => { 
 				if (name=='categ') jsonData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description));
+				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false));
 				if (name=='diff') jsonData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') jsonData.push(new Zone(d.id, d.nom));
 			});
@@ -82,7 +86,17 @@ var dataManager = {
 		return dataManager.getDataFromStorage('categ');
 	},
 	getExercices: () => {
-		return dataManager.getDataFromStorage('exerc');
+		var result = $.Deferred();
+		var ex1 = dataManager.getDataFromStorage('exerc');
+		var ex2 = dataManager.getDataFromStorage('customExerc');
+		$.when(ex1, ex2).done((data1, data2) => {
+			if (data2!=null)
+				result.resolve(data1.concat(data2));
+			else
+				result.resolve(data1);
+		});
+		
+		return result.promise();
 	},
     getDifficultes: () => {
 		return dataManager.getDataFromStorage('diff');
@@ -132,6 +146,14 @@ var dataManager = {
 		});
 		return result.promise();
 	},
+	addCustomExercice: (newExercice) => {
+		dataManager.getDataFromStorage('customExerc').done((data) => {
+			var customExerciceList = [];
+			if (data!=null) customExerciceList = customExerciceList.concat(data);
+			customExerciceList.push(newExercice);
+			window.localStorage.setItem('customExerc', JSON.stringify(customExerciceList));
+		});
+	}
 };
 
 /*
@@ -154,17 +176,43 @@ var filterManager = {
 * Popin Manager : display popin
 */
 var popinManager = {
-	show: (type) => {
+	load: (type) => {
 		var popinName = '';
 		if (type=='OK') popinName = 'popinElementOK';
 		if (type=='OKCancel') popinName = 'popinElementOKCancel';		
 		return pageManager.renderElement(popinName, null, 'divPopin');
 	},
 	hide: () => {
-		$("#divPopin").html("");
 		$("#divPopin").hide();
+		$(".tblContent").show();
+	},
+	show: () => {
+		$("#divPopin").show();
+        $(".tblContent").hide();
 	},
 	validate: () => {
-		console.log('validate');
+		// get keys & values and build result
+		var keyObj = $('.keyForm');
+		var valueObj = $('.valueForm');
+		var result = "";
+		for (i=0;i<keyObj.length;i++) {
+			if (result!='') result += "|";
+			result += $(keyObj[i]).attr('field') + "=" + $(valueObj[i]).val();
+		}
+		// Call callback function
+		var callbackFunc = sessionStorage.getItem('popinCallbackFunction');
+		if (callbackFunc && callbackFunc!='') {
+			callbackFunc = callbackFunc.replace('(','').replace(')','');
+			var arrayCF = callbackFunc.split('.');
+			if (arrayCF.length==2) window[arrayCF[0]][arrayCF[1]](result);
+			if (arrayCF.length==1) window[arrayCF[0]](result);
+		}
+		// reset callback function
+		popinManager.setCallbackFunction('');
+		// hide popin
+		popinManager.hide();
+	},
+	setCallbackFunction: (funcName) => {
+		sessionStorage.setItem('popinCallbackFunction', funcName);
 	}
 };

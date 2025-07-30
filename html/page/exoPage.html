@@ -81,15 +81,34 @@
         },
         // Show popin exercice details
         showDetailPopin: (id) => {
-            popinManager.show('OK').done(() => {
+            popinManager.load('OK').done(() => {
                 dataManager.getExercice(id).done((objExercice) => {
     				var paramObj = [];
     				paramObj.push(objExercice);
     				pageManager.renderElement('popinDetailExerc', paramObj, 'tdPopinContent').done((html) => {
-    					$("#divPopin").show();
+    					popinManager.show();
     				});
     			});
             });
+        },
+        // Validate creation popin
+        validateCreatePopin: (popinResult) => {
+            var arrayResult = popinResult.split('|');
+            var cpt = 0;
+
+            // get data and create new exercice
+            var id = new Date().getTime();
+            var nom = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
+            var categ = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
+            var zone = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
+            var diff = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
+            var desc = arrayResult[cpt].substr(arrayResult[cpt].indexOf('=')+1);
+            
+            // add new exercice
+            dataManager.addCustomExercice(new Exercice(id, nom, categ, zone, diff, desc, true));
+            
+            // refresh list
+            exoPage.searchExercices();
         }
     }
     

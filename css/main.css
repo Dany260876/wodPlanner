@@ -152,6 +152,18 @@ button {
 #btnShowDetails {
     background-image: url("../res/view.png");
 }
+.imgIsCustom_true, .imgIsCustom_false  {
+    background-position: center;
+    background-size: 14px;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    border-style: hidden;
+    background-color: white;
+}
+.imgIsCustom_true {
+    background-image: url("../res/male.png");    
+}
 
 /*
 * Create page
@@ -168,6 +180,25 @@ button {
 }
 .tblCreateExerc select, .tblCreateExerc input {
     width: 100%;
+}
+
+/*
+* Home page
+*/
+#divHomePage {
+    text-align: -webkit-center;
+}
+.tblLogin {
+    width: 80%;
+}
+.tblLogin input {
+    width: 100%;
+}
+.tblLogin .tdButtonLogin {
+    text-align: right;
+}
+#btnValidateLogin {
+    background-image: url("../res/apply.png");
 }
 
 /*
