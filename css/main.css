@@ -72,11 +72,12 @@ button {
 }
 .imgButtonSmall {
     background-repeat: no-repeat;
-    background-size: 12px;
+    background-size: 18px;
     background-position: center;
     width: 22px;
     height: 20px;
-    border-radius: 6px;
+    background-color: white;
+    border-style: none;
 }
 .imgButtonBig {
     background-repeat: no-repeat;
