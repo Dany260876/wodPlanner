@@ -187,6 +187,8 @@ button {
 */
 #divHomePage {
     text-align: -webkit-center;
+    top: 10px;
+    position: relative;
 }
 .tblLogin {
     width: 80%;

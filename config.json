@@ -1,0 +1,11 @@
+[
+  "js/template/template.js",
+  "js/classes/categorie.js",
+  "js/classes/difficulte.js",
+  "js/classes/exercice.js",
+  "js/classes/zone.js",
+  "js/managers/dataManager.js",
+  "js/managers/filterManager.js",
+  "js/managers/pageManager.js",
+  "js/managers/popinManager.js"
+]
