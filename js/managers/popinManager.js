@@ -40,5 +40,31 @@ var popinManager = {
 	},
 	setCallbackFunction: (funcName) => {
 		sessionStorage.setItem('popinCallbackFunction', funcName);
-	}
+	},
+	showConfirmation: (text) => {
+		var params = [];
+		params.push({
+			'tagName':'object',
+			'text':text
+		});
+		pageManager.renderElement('popinYesNo', params, 'divPopin').done(() => {
+		});
+	},
+	validateYesNo: () => {
+		// Call callback function
+		var callbackFunc = sessionStorage.getItem('popinCallbackFunction');
+		if (callbackFunc && callbackFunc!='') {
+			var iPos = callbackFunc.indexOf('(');
+			var params = callbackFunc.substr(iPos);
+			params = params.replace('(','').replace(')','');
+			callbackFunc = callbackFunc.substr(0, iPos);
+			var arrayCF = callbackFunc.split('.');
+			if (arrayCF.length==2) window[arrayCF[0]][arrayCF[1]](params);
+			if (arrayCF.length==1) window[arrayCF[0]](result);
+		}
+		// reset callback function
+		popinManager.setCallbackFunction('');
+		// hide popin
+		popinManager.hide();
+	},
 };
