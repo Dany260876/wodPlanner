@@ -86,7 +86,23 @@
     				var paramObj = [];
     				paramObj.push(objExercice);
     				pageManager.renderElement('popinDetailExerc', paramObj, 'tdPopinContent').done((html) => {
-    					popinManager.show();
+    					// replace id by values
+                        var cat = dataManager.getCategorie(objExercice.categorie_id);
+                        var dif = dataManager.getDifficulte(objExercice.difficulte_id);
+                        var zon = dataManager.getZonesByIds(objExercice.zone_du_corps_id);
+                        $.when(cat,dif,zon).done((c,d,z)=>{
+                            $("#categorie_id").html(c.nom);
+                            $("#difficulte_id").html(d.nom);
+                            var zones = "";
+                            $(z).each(function() {
+                                if (zones!='') zones += ', ';
+                                zones += this.nom;
+                            });
+                            $("#zone_du_corps_id").html(zones);
+                        });
+                        
+                        // show popin
+                        popinManager.show();
     				});
     			});
             });
