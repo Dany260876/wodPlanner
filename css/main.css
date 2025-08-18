@@ -196,11 +196,12 @@ button {
     width: 100%;
     height: 5%;
 }
-#tblDetailExercButtons td {
-    text-align: right;    
-}
 #btnDeleteExerc {
     background-image: url("../res/delete.png");
+}
+#divEditExercBtn {
+    width: 100%;
+    text-align: right;
 }
 
 /*

@@ -12,11 +12,9 @@
         <td>Difficulté</td><td id='difficulte_id'>[object.difficulte_id]</td>
     </tr>
     <tr>
-        <td>Description</td><td>[object.description]</td>
+        <td>Description</td><td><textarea rows='10' cols='30' readonly='true'>[object.description]</textarea></td>
     </tr>
 </table>
-<table id='tblDetailExercButtons'>
-    <tr>
-        <td><button class='imgButtonSmall' id='btnDeleteExerc' onclick="popinManager.setCallbackFunction('exoPage.deleteExercice([object.id])');popinManager.showConfirmation('Confirmez-vous la suppression de l\'exercice ?')">&nbsp;</button></td>
-    </tr>
-</table>
+<div id='divDetailExercButtons'>
+    <div id='divEditExercBtn'><button class='imgButtonSmall' id='btnDeleteExerc' onclick="popinManager.setCallbackFunction('exoPage.deleteExercice([object.id])');popinManager.showConfirmation('Confirmez-vous la suppression de l\'exercice ?')">&nbsp;</button></div>
+</div>

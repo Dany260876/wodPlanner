@@ -100,6 +100,13 @@
                             });
                             $("#zone_du_corps_id").html(zones);
                         });
+                        // show/hide delete button
+                        var customExo = $("#tblDetailExerc").data('custom');
+                        $("#divDetailExercButtons").hide();
+                        if (customExo) {
+                            var html = $("#divDetailExercButtons").html();
+                            $(".trPopinHeader td").html(html);                            
+                        }
                         
                         // show popin
                         popinManager.show();
@@ -128,7 +135,10 @@
         },
         // Delete exercice
         deleteExercice: (id) => {
-            console.log('delete exercice : ' + id);
+            dataManager.deleteCustomExercice(id).done(() => {
+                // refresh list
+                exoPage.searchExercices();
+            });
         }
     }
     
