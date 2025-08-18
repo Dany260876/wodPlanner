@@ -128,5 +128,25 @@ var dataManager = {
 			customExerciceList.push(newExercice);
 			window.localStorage.setItem('customExerc', JSON.stringify(customExerciceList));
 		});
-	}
+	},
+	deleteCustomExercice: (idExercice) => {
+		var result = $.Deferred();
+		dataManager.getDataFromStorage('customExerc').done((customExerciceList) => {
+			var found = false;
+			$(customExerciceList).each(function(index, value) {
+				if (value.id==idExercice) {
+					found = true;
+					customExerciceList.splice(index, 1);
+				}
+			});
+			if (found) {
+				window.localStorage.setItem('customExerc', JSON.stringify(customExerciceList));
+				result.resolve();
+			} 
+			else {
+				result.reject();
+			}
+		});
+		return result.promise();
+	},
 };
