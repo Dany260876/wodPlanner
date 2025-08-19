@@ -89,7 +89,7 @@ button {
     border-radius: 8px;
 }
 #btnClearSearch {
-    background-image: url("../res/delete.png");
+    background-image: url("../res/refresh.png");
 }
 #btnHome {
     background-image: url("../res/home.png");
@@ -192,6 +192,9 @@ button {
 #tblDetailExerc tr {
     vertical-align: top;   
 }
+#tblDetailExerc textarea {
+    border-style: none;  
+}
 #tblDetailExercButtons {
     width: 100%;
     height: 5%;
@@ -269,7 +272,7 @@ button {
     width: 100px;
 }
 #btnPopinCancel {
-    background-image: url("../res/delete.png");
+    background-image: url("../res/close.png");
     height: 60px;
     width: 100px;
 }
