@@ -15,8 +15,8 @@ var dataManager = {
 			var listData = [];
 			jsonData.forEach((d) => { 
 				if (name=='categ') listData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false));
-				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true));
+				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes));
+				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes));
 				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') listData.push(new Zone(d.id, d.nom));
 			});
@@ -31,7 +31,7 @@ var dataManager = {
 			var jsonData = [];
 			data.forEach((d) => { 
 				if (name=='categ') jsonData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false));
+				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes));
 				if (name=='diff') jsonData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') jsonData.push(new Zone(d.id, d.nom));
 			});
