@@ -15,7 +15,7 @@
     });
     $('#btnCreateEx').click(() => {
         popinManager.load('OKCancel').done(() => {
-            pageManager.renderElement('popinCreateExerc', null, 'tdPopinContent').done(() => {
+            pageManager.renderElement('exo/popinCreateExerc', null, 'tdPopinContent').done(() => {
                 // add values to select
                 var get1 = dataManager.getCategories();
                 var get2 = dataManager.getDifficultes();

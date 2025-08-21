@@ -1,17 +1,19 @@
 <table class='tblFooterMenu'>
     <tr>
-        <td><button id='btnExercices'>Exercices</button></td>
-        <td><button id='btnWod'>WOD</button></td>
-        <td><button id='btnStats'>Stats</button></td>
+        <td><button class='imgButtonBig' id='btnHome'>Accueil</button></td>
+        <td><button class='imgButtonBig' id='btnStartWod'>Démarrer</button></td>
+        <td><button class='imgButtonBig' id='btnRecentWod'>Récents</button></td>
     </tr>
 </table>
 <script>
-    $('#btnExercices').click(function() {       
+    $('#btnHome').click(function() {
+        pageManager.renderPage("homePage");
+        pageManager.renderFooter("footerMenu");
     });
-    $('#btnWod').click(function() {
-        console.log('btnWod');
+    $('#btnStartWod').click(function() {
+        console.log('start');
     });
-    $('#btnStats').click(function() {
-        console.log('btnStats');
+    $('#btnRecentWod').click(function() {
+        console.log('Récents');
     });
 </script>

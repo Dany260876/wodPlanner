@@ -1,12 +1,12 @@
 <table class='tblSearch'>
     <tr>
-        <td>Type :</td><td id='tdSelectCateg'></td>
+        <td>Type</td><td id='tdSelectCateg'></td>
     </tr>
     <tr>
-        <td>Zone du corps :</td><td id='tdSelectZones'></td>
+        <td>Zone du corps</td><td id='tdSelectZones'></td>
     </tr>
     <tr>
-        <td>Difficulté :</td><td id='tdSelectDiff'></td><td class='tdButtonClearSearch'><button class='imgButtonSmall' id='btnClearSearch'>&nbsp;</button></td>
+        <td>Difficulté</td><td id='tdSelectDiff'></td><td class='tdButtonClearSearch'><button class='imgButtonSmall' id='btnClearSearch'>&nbsp;</button></td>
     </tr>
 </table>
 <hr/>
@@ -45,21 +45,9 @@
         // Perform exercices search 
         searchExercices: () => {
             // Search exercices
-            dataManager.getExercices().done(function(listExercices) {
-    
-                // Get filter values
-                var filterDiffId = $('#tdSelectDiff select').val()*1;
-                var filterCategId = $('#tdSelectCateg select').val()*1;
-                var filterZoneId = $('#tdSelectZones select').val()*1;
-    
-                // filter results
-                var results = listExercices;
-                results = filterManager.filterExercices(results, filterCategId, 'categ');
-                results = filterManager.filterExercices(results, filterDiffId, 'diff');
-                results = filterManager.filterExercices(results, filterZoneId, 'zone');
-    
+            filterManager.filterExercices('tdSelectCateg','tdSelectZones','tdSelectDiff').done(function(results) {   
                 // Display results
-                pageManager.renderElement('listElement', results, 'divResultsExercices').done(function(html) {                  
+                pageManager.renderElement('exo/listElementsExerc', results, 'divResultsExercices').done(function(html) {                  
                     // Replace ids with values
                     $('.ulResults td').each(function(){
                         var data = $(this).data();
@@ -85,7 +73,7 @@
                 dataManager.getExercice(id).done((objExercice) => {
     				var paramObj = [];
     				paramObj.push(objExercice);
-    				pageManager.renderElement('popinDetailExerc', paramObj, 'tdPopinContent').done((html) => {
+    				pageManager.renderElement('exo/popinDetailExerc', paramObj, 'tdPopinContent').done((html) => {
     					// replace id by values
                         var cat = dataManager.getCategorie(objExercice.categorie_id);
                         var dif = dataManager.getDifficulte(objExercice.difficulte_id);
