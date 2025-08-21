@@ -4,8 +4,8 @@
 var popinManager = {
 	load: (type) => {
 		var popinName = '';
-		if (type=='OK') popinName = 'popinElementOK';
-		if (type=='OKCancel') popinName = 'popinElementOKCancel';		
+		if (type=='OK') popinName = 'popin/popinOK';
+		if (type=='OKCancel') popinName = 'popin/popinOKCancel';		
 		return pageManager.renderElement(popinName, null, 'divPopin');
 	},
 	hide: () => {
@@ -47,7 +47,7 @@ var popinManager = {
 			'tagName':'object',
 			'text':text
 		});
-		pageManager.renderElement('popinYesNo', params, 'divPopin').done(() => {
+		pageManager.renderElement('popin/popinYesNo', params, 'divPopin').done(() => {
 		});
 	},
 	validateYesNo: () => {

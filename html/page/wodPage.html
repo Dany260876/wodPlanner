@@ -1,3 +1,73 @@
 <div>
-    Welcome
+    <table id='tblWodTitleDate'>
+        <tr>
+            <td>WOD du</td><td><div id='divDateWod'></div></td>
+        </tr>
+    </table>
+    <hr/>
+    <table id='tblWodActions'>
+        <tr>
+            <td><button id='btnWodAddExo'>Ajouter des exercices...</button></td>
+        </tr>
+    </table>
+    <table id='tblWodItems'>
+    </table>
 </div>
+<script>
+    var wodPage = {
+        wodItemsCount: 0,
+        
+        // init page components
+        initialise: () => {
+            var result = $.Deferred();
+            result.resolve();
+            return result.promise();
+        },
+        // Add WOD item
+        addWodItem: () => {
+            popinManager.setCallbackFunction('wodPage.validateWodItems()');
+            popinManager.load('OKCancel').done(() => {
+                pageManager.renderElement('wod/popinSelectWodItems', null, 'tdPopinContent').done((html) => {
+                    var get1 = dataManager.getCategories();
+                    var get2 = dataManager.getDifficultes();
+                    var get3 = dataManager.getZones();
+                    $.when(get1, get2, get3).done((data1, data2, data3) => {
+                        data1.splice(0,0,new Categorie(-1,"-", "-"));
+                        var render1 = pageManager.renderElement('selectElement', data1, 'divCritereCateg');
+                        data2.splice(0,0,new Difficulte(-1,"-"));
+                        var render2 = pageManager.renderElement('selectElement', data2, 'divCritereDiff'); 
+                        data3.splice(0,0,new Zone(-1,"-"));
+                        var render3 = pageManager.renderElement('selectElement', data3, 'divCritereZone');
+                        $.when(render1, render2, render3).done(() => {
+                            $("#btnWodItemsSearch").click(()=>{
+                                wodPage.filterWodItems();
+                            });
+                            popinManager.show();
+                        });
+                    });
+                });
+            });
+        },
+        // Validate Wod items selection
+        validateWodItems: (data) => {
+            console.log("add wod items");
+        },
+        // Filter items on addWodItem popin
+        filterWodItems:() => {
+            // Search exercices
+            filterManager.filterExercices('divCritereCateg','divCritereZone','divCritereDiff').done(function(results) {
+                debugger;
+            });
+        }
+    }
+    wodPage.initialise().done(() => {
+        // update current datetime
+        var date = new Date();
+        $("#divDateWod").html(date.toLocaleDateString() + ' à ' + date.toLocaleTimeString());
+
+        // buttons clic
+        $("#btnWodAddExo").click(()=>{
+            wodPage.addWodItem();
+        });
+    });
+</script>

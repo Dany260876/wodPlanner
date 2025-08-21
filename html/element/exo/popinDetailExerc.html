@@ -1,0 +1,23 @@
+<table id='tblDetailExerc' data-custom='[object.isCustom]'>
+    <tr>
+        <td>Nom</td><td>[object.nom]</td>
+    </tr>
+    <tr>
+        <td>Catégorie</td><td id='categorie_id'>[object.categorie_id]</td>
+    </tr>
+    <tr>
+        <td>Zone</td><td id='zone_du_corps_id'>[object.zone_du_corps_id]</td>
+    </tr>
+    <tr>
+        <td>Difficulté</td><td id='difficulte_id'>[object.difficulte_id]</td>
+    </tr>
+    <tr>
+        <td>Description</td><td><textarea rows='10' cols='30' readonly='true'>[object.description]</textarea></td>
+    </tr>
+    <tr>
+        <td>Etapes</td><td><textarea rows='10' cols='30' readonly='true'>[object.etapes]</textarea></td>
+    </tr>
+</table>
+<div id='divDetailExercButtons'>
+    <div id='divEditExercBtn'><button class='imgButtonSmall' id='btnDeleteExerc' onclick="popinManager.setCallbackFunction('exoPage.deleteExercice([object.id])');popinManager.showConfirmation('Confirmez-vous la suppression de l\'exercice ?')">&nbsp;</button></div>
+</div>

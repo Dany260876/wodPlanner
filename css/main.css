@@ -31,8 +31,12 @@
 #tdContent {
     vertical-align: baseline;
 }
-#tdContent select {
+#tdContent select, #tdPopinContent select {
     width: 150px;
+}
+
+#tdPopinContent table {
+    width: 100%;
 }
 
 /* 
@@ -208,6 +212,19 @@ button {
 }
 
 /*
+* WOD Page
+*/
+#btnStartWod {
+    background-image: url("../res/go.png");
+}
+#btnRecentWod {
+    background-image: url("../res/calendar.png");
+}
+#btnWodItemsSearch {
+     background-image: url("../res/search.png");
+}
+
+/*
 * Home page
 */
 #divHomePage {
@@ -262,7 +279,7 @@ button {
     width: 100%;
 }
 #btnPopinFermer {
-    background-image: url("../res/apply.png");
+    background-image: url("../res/close.png");
     height: 60px;
     width: 100px;
 }
@@ -306,7 +323,7 @@ button {
     width: 100px;
 }
 #btnPopinNo {
-    background-image: url("../res/delete.png");
+    background-image: url("../res/close.png");
     height: 60px;
     width: 100px;
 }
