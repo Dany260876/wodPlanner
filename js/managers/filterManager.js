@@ -3,22 +3,18 @@
 */
 var filterManager = {
 	// Filter all exercices by criterias
-	filterExercices : (selectCategId, selectZoneId, selectDiffId) => {
+	filterExercices : (listElements) => {
 		var result = $.Deferred();
 		// Search exercices
 		dataManager.getExercices()
 			.done(function(listExercices) {
-				// Get filter values
-				var filterDiffId = $('#' + selectDiffId + ' select').val()*1;
-				var filterCategId = $('#' + selectCategId + ' select').val()*1;
-				var filterZoneId = $('#' + selectZoneId + ' select').val()*1;
-	
 				// filter results
 				var results = listExercices;
-				results = filterManager.filterExercicesByField(results, filterCategId, 'categ');
-				results = filterManager.filterExercicesByField(results, filterDiffId, 'diff');
-				results = filterManager.filterExercicesByField(results, filterZoneId, 'zone');
-	
+				listElements.forEach((element) => {
+					let elementValue = $(element).val()*1;
+					let type = $(element).data('type');
+					results = filterManager.filterExercicesByField(results, elementValue, type);
+				});
 				result.resolve(results);
 			})
 			.fail(function() {

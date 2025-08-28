@@ -107,6 +107,20 @@ var dataManager = {
 		});
 		return result.promise();
 	},
+	getExercicesByIds: (listIds) => {
+		var result = $.Deferred();
+		dataManager.getExercices().done((data) => {
+			let items = [];
+			data.forEach((item, index, arr) => {
+				if (listIds.indexOf(item.id)>-1) items.push(item);
+			});
+			if (items.length>0)
+				result.resolve(items);
+			else
+				result.reject(null);
+		});
+		return result.promise();
+	},
 	getZonesByIds: (listIds) => {
 		var result = $.Deferred();
 		dataManager.getZones().done((data) => {

@@ -5,21 +5,21 @@
         </tr>
     </table>
     <hr/>
+    <table id='tblWodItems'></table>
+    <br/>
     <table id='tblWodActions'>
         <tr>
             <td><button id='btnWodAddExo'>Ajouter des exercices...</button></td>
         </tr>
     </table>
-    <table id='tblWodItems'>
-    </table>
 </div>
 <script>
     var wodPage = {
-        wodItemsCount: 0,
+        wodItems: [],
         
         // init page components
         initialise: () => {
-            var result = $.Deferred();
+            let result = $.Deferred();
             result.resolve();
             return result.promise();
         },
@@ -28,20 +28,26 @@
             popinManager.setCallbackFunction('wodPage.validateWodItems()');
             popinManager.load('OKCancel').done(() => {
                 pageManager.renderElement('wod/popinSelectWodItems', null, 'tdPopinContent').done((html) => {
-                    var get1 = dataManager.getCategories();
-                    var get2 = dataManager.getDifficultes();
-                    var get3 = dataManager.getZones();
+                    let get1 = dataManager.getCategories();
+                    let get2 = dataManager.getDifficultes();
+                    let get3 = dataManager.getZones();
                     $.when(get1, get2, get3).done((data1, data2, data3) => {
                         data1.splice(0,0,new Categorie(-1,"-", "-"));
-                        var render1 = pageManager.renderElement('selectElement', data1, 'divCritereCateg');
+                        let render1 = pageManager.renderElement('selectElement', data1, 'divCritereCateg');
                         data2.splice(0,0,new Difficulte(-1,"-"));
-                        var render2 = pageManager.renderElement('selectElement', data2, 'divCritereDiff'); 
+                        let render2 = pageManager.renderElement('selectElement', data2, 'divCritereDiff'); 
                         data3.splice(0,0,new Zone(-1,"-"));
-                        var render3 = pageManager.renderElement('selectElement', data3, 'divCritereZone');
+                        let render3 = pageManager.renderElement('selectElement', data3, 'divCritereZone');
                         $.when(render1, render2, render3).done(() => {
-                            $("#btnWodItemsSearch").click(()=>{
-                                wodPage.filterWodItems();
+                            $("#divCritereCateg select").data("type","categ");
+                            $("#divCritereDiff select").data("type","diff");
+                            $("#divCritereZone select").data("type","zone");
+                            $("#tdPopinContent select").on("change", () => { wodPage.filterWodItems(); });
+                            $("#btnWodItemsClear").on("click", () => {
+                                $('#tdPopinContent select').val(-1);
+                                wodPage.filterWodItems();    
                             });
+                            wodPage.filterWodItems();
                             popinManager.show();
                         });
                     });
@@ -50,19 +56,54 @@
         },
         // Validate Wod items selection
         validateWodItems: (data) => {
-            console.log("add wod items");
+            let listIdExoSelected = [];
+            let arrayData = data.split("|");
+            arrayData.forEach((item) => {
+                let itemSplit = item.split('=');
+                if (itemSplit[1]=='true') {
+                    listIdExoSelected.push(itemSplit[0]*1);
+                }
+            });
+            dataManager.getExercicesByIds(listIdExoSelected).done(function(listExo) {
+                wodPage.wodItems = wodPage.wodItems.concat(listExo);
+                pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
+                    $("#tblWodItems button").on("click", (obj) => {
+                        let parent = $(obj.currentTarget).parents('.trWodRow');
+                        let id = $(parent).data('id');
+                        console.log("delete : " + id);
+                    });
+                });
+            });
         },
         // Filter items on addWodItem popin
         filterWodItems:() => {
             // Search exercices
-            filterManager.filterExercices('divCritereCateg','divCritereZone','divCritereDiff').done(function(results) {
-                debugger;
+            let listCriteresElements = [$("#divCritereCateg select"),$("#divCritereZone select"),$("#divCritereDiff select")];
+            filterManager.filterExercices(listCriteresElements).done(function(results) {
+                pageManager.renderElement('wod/listExoWodSelect', results, 'divWodItemsResults').done(()=>{
+                    // Replace ids with values
+                    $('.tblExoListWod td').each(function(){
+                        let data = $(this).data();
+                        if (data) {
+                            if (data.categ) {
+                                dataManager.getCategorie(data.categ).done((item) => {
+                                   $(this).html(item.nom); 
+                                });
+                            }
+                            if (data.diff) {
+                                dataManager.getDifficulte(data.diff).done((item) => {
+                                   $(this).html(item.nom); 
+                                });
+                            }
+                        }
+                    }); 
+                })
             });
         }
     }
     wodPage.initialise().done(() => {
         // update current datetime
-        var date = new Date();
+        let date = new Date();
         $("#divDateWod").html(date.toLocaleDateString() + ' à ' + date.toLocaleTimeString());
 
         // buttons clic
