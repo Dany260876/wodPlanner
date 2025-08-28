@@ -9,19 +9,27 @@
     <br/>
     <table id='tblWodActions'>
         <tr>
-            <td><button id='btnWodAddExo'>Ajouter des exercices...</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddExo'>Exercices</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddRest'>Repos</button></td>
         </tr>
     </table>
 </div>
 <script>
     var wodPage = {
         wodItems: [],
+        selectedWodItems: [],
         
         // init page components
         initialise: () => {
             let result = $.Deferred();
             result.resolve();
             return result.promise();
+        },
+        // Add Rest item
+        addWodRestItem:() => {
+            let idRandom = new Date().getTime();
+            wodPage.wodItems.push(new WodItem('REST', idRandom, "Repos (en secondes)", 30, ""));
+            wodPage.renderWodItems();
         },
         // Add WOD item
         addWodItem: () => {
@@ -32,7 +40,7 @@
                     let get2 = dataManager.getDifficultes();
                     let get3 = dataManager.getZones();
                     $.when(get1, get2, get3).done((data1, data2, data3) => {
-                        data1.splice(0,0,new Categorie(-1,"-", "-"));
+                        data1.splice(0,0,new Categorie(-1,"-"));
                         let render1 = pageManager.renderElement('selectElement', data1, 'divCritereCateg');
                         data2.splice(0,0,new Difficulte(-1,"-"));
                         let render2 = pageManager.renderElement('selectElement', data2, 'divCritereDiff'); 
@@ -48,32 +56,68 @@
                                 wodPage.filterWodItems();    
                             });
                             wodPage.filterWodItems();
+                            wodPage.selectedWodItems = [];
                             popinManager.show();
                         });
                     });
                 });
             });
         },
+        // Render wod items list on wod page
+        renderWodItems:() => {
+            pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
+                $("#tblWodItems button").on("click", (obj) => {
+                    let parent = $(obj.currentTarget).parents('.trWodRow');
+                    let id = $(parent).data('id');
+                    wodPage.wodItems.forEach((item, index) => {
+                        if (item.exerciceId==id) {
+                            wodPage.wodItems.splice(index,1);
+                        };
+                    });
+                    wodPage.renderWodItems();
+                });
+            });
+        },
         // Validate Wod items selection
         validateWodItems: (data) => {
             let listIdExoSelected = [];
-            let arrayData = data.split("|");
-            arrayData.forEach((item) => {
-                let itemSplit = item.split('=');
-                if (itemSplit[1]=='true') {
-                    listIdExoSelected.push(itemSplit[0]*1);
-                }
+            wodPage.selectedWodItems.forEach((item) => {
+                listIdExoSelected.push(item*1);
             });
             dataManager.getExercicesByIds(listIdExoSelected).done(function(listExo) {
-                wodPage.wodItems = wodPage.wodItems.concat(listExo);
-                pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
-                    $("#tblWodItems button").on("click", (obj) => {
-                        let parent = $(obj.currentTarget).parents('.trWodRow');
-                        let id = $(parent).data('id');
-                        console.log("delete : " + id);
-                    });
+                let listWodItems = [];
+                listExo.forEach((exo) => {
+                    listWodItems.push(new WodItem('EXO', exo.id, exo.nom, 10, ''));
                 });
+                wodPage.wodItems = wodPage.wodItems.concat(listWodItems);
+                wodPage.renderWodItems();
             });
+        },
+        // Select a Wod on the selection list (add it to selecteditems)
+        selectWodItem:(obj) => {
+            let parent = $(obj).parents('.trWodItem');
+            let dataKeyForm = $(parent).children('.keyForm');
+            let id = $(dataKeyForm).attr('field');
+            if (obj.checked) {
+                wodPage.selectedWodItems.push(id);
+            }
+            else {
+                let pos = wodPage.selectedWodItems.indexOf(id);
+                wodPage.selectedWodItems.splice(pos,1);
+            }
+        },
+        // check selected items on content change
+        checkSelectedItems:() => {
+            if (wodPage.selectedWodItems.length>0) {
+                $.each($(".trWodItem"), function(i, item) {
+                    let tdData = $(item).children('.keyForm');
+                    let currentId = $(tdData).attr('field');
+                    if (wodPage.selectedWodItems.indexOf(currentId)>-1) {
+                        let checkBox = $(item).find('#chkExoWodChecked');
+                        $(checkBox).prop('checked', true);
+                    } 
+                });
+            }
         },
         // Filter items on addWodItem popin
         filterWodItems:() => {
@@ -96,7 +140,9 @@
                                 });
                             }
                         }
-                    }); 
+                    });
+                    // Check selected items
+                    wodPage.checkSelectedItems();
                 })
             });
         }
@@ -109,6 +155,9 @@
         // buttons clic
         $("#btnWodAddExo").click(()=>{
             wodPage.addWodItem();
+        });
+        $("#btnWodAddRest").click(()=>{
+            wodPage.addWodRestItem();
         });
     });
 </script>

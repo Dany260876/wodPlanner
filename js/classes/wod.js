@@ -1,7 +1,9 @@
 class WodItem extends injectableObject {
-	constructor(exoId, reps, infos) {
+	constructor(type, exoId, nom, reps, infos) {
 		super();
+		this.type = type;
 		this.exerciceId = exoId;
+		this.nom = nom;
 		this.nbReps = reps;
 		this.infos = infos;
 	}
