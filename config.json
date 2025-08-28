@@ -4,6 +4,7 @@
   "js/classes/difficulte.js",
   "js/classes/exercice.js",
   "js/classes/zone.js",
+  "js/classes/wod.js",
   "js/managers/dataManager.js",
   "js/managers/filterManager.js",
   "js/managers/pageManager.js",

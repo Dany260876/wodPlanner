@@ -23,7 +23,12 @@ var popinManager = {
 		var result = "";
 		for (i=0;i<keyObj.length;i++) {
 			if (result!='') result += "|";
-			result += $(keyObj[i]).attr('field') + "=" + $(valueObj[i]).val();
+			if ($(valueObj[i]).attr('type')=='checkbox') {
+				let value = $(valueObj[i]).is(':checked');
+				result += $(keyObj[i]).attr('field') + "=" + value;
+			}
+			else
+				result += $(keyObj[i]).attr('field') + "=" + $(valueObj[i]).val();
 		}
 		// Call callback function
 		var callbackFunc = sessionStorage.getItem('popinCallbackFunction');

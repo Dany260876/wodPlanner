@@ -22,9 +22,7 @@
             var get3 = dataManager.getZones();
             
             $('#btnClearSearch').click(() => {
-                $('#tdSelectCateg select').val(-1);
-                $('#tdSelectZones select').val(-1);
-                $('#tdSelectDiff select').val(-1);
+                $('.tblSearch select').val(-1);
                 exoPage.searchExercices();
             });
 
@@ -36,35 +34,43 @@
                 data3.splice(0,0,new Zone(-1,"-"));
                 var render3 = pageManager.renderElement('selectElement', data3, 'tdSelectZones');
                 $.when(render1, render2, render3).done(() => {
+                    $('#tdSelectCateg select').data('type','categ');
+                    $('#tdSelectZones select').data('type','zone');
+                    $('#tdSelectDiff select').data('type','diff');
+                    $('.tblSearch select').on("change", () => { exoPage.searchExercices(); });
                     result.resolve(); 
                 });
             });
             
             return result.promise();
         },
+        showExercices: (exercices) => {
+            // Display results
+            pageManager.renderElement('exo/listElementsExerc', exercices, 'divResultsExercices').done(function(html) {                  
+                // Replace ids with values
+                $('.ulResults td').each(function(){
+                    var data = $(this).data();
+                    if (data) {
+                        if (data.categ) {
+                            dataManager.getCategorie(data.categ).done((item) => {
+                               $(this).html(item.nom); 
+                            });
+                        }
+                        if (data.diff) {
+                            dataManager.getDifficulte(data.diff).done((item) => {
+                               $(this).html(item.nom); 
+                            });
+                        }
+                    }
+                }); 
+            });
+        },
         // Perform exercices search 
         searchExercices: () => {
             // Search exercices
-            filterManager.filterExercices('tdSelectCateg','tdSelectZones','tdSelectDiff').done(function(results) {   
-                // Display results
-                pageManager.renderElement('exo/listElementsExerc', results, 'divResultsExercices').done(function(html) {                  
-                    // Replace ids with values
-                    $('.ulResults td').each(function(){
-                        var data = $(this).data();
-                        if (data) {
-                            if (data.categ) {
-                                dataManager.getCategorie(data.categ).done((item) => {
-                                   $(this).html(item.nom); 
-                                });
-                            }
-                            if (data.diff) {
-                                dataManager.getDifficulte(data.diff).done((item) => {
-                                   $(this).html(item.nom); 
-                                });
-                            }
-                        }
-                    }); 
-                });
+            let listFilterFields = [$("#tdSelectCateg select"),$("#tdSelectZones select"),$("#tdSelectDiff select")];
+            filterManager.filterExercices(listFilterFields).done(function(results) {   
+                exoPage.showExercices(results);
             });
         },
         // Show popin exercice details

@@ -98,8 +98,11 @@ button {
 #btnHome {
     background-image: url("../res/home.png");
 }
-#btnSearchEx {
-    background-image: url("../res/search.png");
+#btnToggleEx.User {
+    background-image: url("../res/male.png");
+}
+#btnToggleEx.All {
+    background-image: url("../res/sync.png");
 }
 #btnCreateEx {
     background-image: url("../res/add.png");
@@ -220,8 +223,31 @@ button {
 #btnRecentWod {
     background-image: url("../res/calendar.png");
 }
-#btnWodItemsSearch {
-     background-image: url("../res/search.png");
+#btnWodItemsClear {
+     background-image: url("../res/refresh.png");
+}
+
+#divWodItemsResults {
+    height: 85%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#tblWodItems {
+    width: 100%;
+}
+
+#tblWodItems input {
+    width: 40px;
+}
+
+#tblExoListWod .tdResultMain {
+    width: 80%;
+}
+
+.tblExoListWod#btnDeleteExerc {
+    background-image: url("../res/delete.png");
 }
 
 /*
