@@ -250,6 +250,23 @@ button {
     background-image: url("../res/delete.png");
 }
 
+#btnWodAddExo {
+    background-image: url("../res/add.png");
+    width:60px;
+}
+
+#btnWodAddRest {
+    background-image: url("../res/clock.png");
+    width:60px;
+}
+
+.trWodRow[data-type='REST'] {
+    color:red;
+}
+.trWodRow[data-type='EXO'] {
+    color: seagreen;
+}
+
 /*
 * Home page
 */
