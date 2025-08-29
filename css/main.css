@@ -105,13 +105,13 @@ button {
     background-image: url("../res/sync.png");
 }
 #btnCreateEx {
-    background-image: url("../res/add.png");
+    background-image: url("../res/create.png");
 }
 #btnExercices {
     background-image: url("../res/table.png");
 }
 #btnWod {
-    background-image: url("../res/clock.png");
+    background-image: url("../res/stopwatch.png");
 }
 #btnStats {
     background-image: url("../res/3d_bar_chart.png");
@@ -239,24 +239,25 @@ button {
 }
 
 #tblWodItems input {
-    width: 40px;
+    width: 30px;
 }
 
 #tblExoListWod .tdResultMain {
     width: 80%;
 }
-
 .tblExoListWod#btnDeleteExerc {
     background-image: url("../res/delete.png");
 }
-
 #btnWodAddExo {
-    background-image: url("../res/add.png");
+    background-image: url("../res/create.png");
     width:60px;
 }
-
 #btnWodAddRest {
-    background-image: url("../res/clock.png");
+    background-image: url("../res/stop_sign.png");
+    width:60px;
+}
+#btnWodAddSerie {
+    background-image: url("../res/redo.png");
     width:60px;
 }
 
@@ -265,6 +266,18 @@ button {
 }
 .trWodRow[data-type='EXO'] {
     color: seagreen;
+}
+.trWodRow[data-type='SERIE'] {
+    color: blue;
+}
+.trWodRow[data-type='REST'] .btnWodItemIcon {
+    background-image: url("../res/stop_sign.png");
+}
+.trWodRow[data-type='EXO'] .btnWodItemIcon {
+    background-image: url("../res/next.png");
+}
+.trWodRow[data-type='SERIE'] .btnWodItemIcon {
+    background-image: url("../res/redo.png");
 }
 
 /*

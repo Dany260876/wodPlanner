@@ -11,6 +11,7 @@
         <tr>
             <td><button class='imgButtonBig' id='btnWodAddExo'>Exercices</button></td>
             <td><button class='imgButtonBig' id='btnWodAddRest'>Repos</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddSerie'>Série</button></td>
         </tr>
     </table>
 </div>
@@ -29,6 +30,12 @@
         addWodRestItem:() => {
             let idRandom = new Date().getTime();
             wodPage.wodItems.push(new WodItem('REST', idRandom, "Repos (en secondes)", 30, ""));
+            wodPage.renderWodItems();
+        },
+        // Add Rest item
+        addWodSerieItem:() => {
+            let idRandom = new Date().getTime();
+            wodPage.wodItems.push(new WodItem('SERIE', idRandom, "Série (Loop)", 5, ""));
             wodPage.renderWodItems();
         },
         // Add WOD item
@@ -65,6 +72,7 @@
         },
         // Render wod items list on wod page
         renderWodItems:() => {
+            let result = $.Deferred();
             pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
                 $("#tblWodItems button").on("click", (obj) => {
                     let parent = $(obj.currentTarget).parents('.trWodRow');
@@ -76,7 +84,15 @@
                     });
                     wodPage.renderWodItems();
                 });
+
+                // set values
+                wodPage.wodItems.forEach((item) => {
+                    $(".trWodRow[data-id='" + item.exerciceId + "'] input").val(item.nbReps); 
+                });
+                
+                result.resolve();
             });
+            return result.promise();
         },
         // Validate Wod items selection
         validateWodItems: (data) => {
@@ -158,6 +174,9 @@
         });
         $("#btnWodAddRest").click(()=>{
             wodPage.addWodRestItem();
+        });
+        $("#btnWodAddSerie").click(()=>{
+            wodPage.addWodSerieItem();
         });
     });
 </script>
