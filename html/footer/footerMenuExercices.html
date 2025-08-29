@@ -33,8 +33,7 @@
                 $('#btnToggleEx').text('Utilisateur');
            });   
         }
-        $('#btnToggleEx').toggleClass('User');
-        $('#btnToggleEx').toggleClass('All');
+        $('#btnToggleEx').toggleClass(['User','All']);
     });
     $('#btnCreateEx').click(() => {
         popinManager.load('OKCancel').done(() => {

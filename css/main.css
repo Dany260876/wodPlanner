@@ -242,10 +242,19 @@ button {
     width: 30px;
 }
 
+#tblWodTitleDate #btnEditWodName[class='imgButtonSmall edit'] {
+    background-image: url("../res/modify.png");
+}
+#tblWodTitleDate #btnEditWodName[class='imgButtonSmall save'] {
+    background-image: url("../res/save1.png");
+}
+#txtWodName {
+    width: 200px;
+}
 #tblExoListWod .tdResultMain {
     width: 80%;
 }
-.tblExoListWod#btnDeleteExerc {
+.tblExoListWod #btnDeleteExerc {
     background-image: url("../res/delete.png");
 }
 #btnWodAddExo {
@@ -279,6 +288,8 @@ button {
 .trWodRow[data-type='SERIE'] .btnWodItemIcon {
     background-image: url("../res/redo.png");
 }
+
+.trWodRow input[class='readonly'] {border-style: none;}
 
 /*
 * Home page

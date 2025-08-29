@@ -1,7 +1,8 @@
 <div>
     <table id='tblWodTitleDate'>
         <tr>
-            <td>WOD du</td><td><div id='divDateWod'></div></td>
+            <td id='tdWodName'></td>
+            <td><button class='imgButtonSmall edit' id='btnEditWodName'/></td>
         </tr>
     </table>
     <hr/>
@@ -17,6 +18,7 @@
 </div>
 <script>
     var wodPage = {
+        currentWod: {},
         wodItems: [],
         selectedWodItems: [],
         
@@ -29,7 +31,7 @@
         // Add Rest item
         addWodRestItem:() => {
             let idRandom = new Date().getTime();
-            wodPage.wodItems.push(new WodItem('REST', idRandom, "Repos (en secondes)", 30, ""));
+            wodPage.wodItems.push(new WodItem('REST', idRandom, "Repos (secondes)", 30, ""));
             wodPage.renderWodItems();
         },
         // Add Rest item
@@ -87,7 +89,7 @@
 
                 // set values
                 wodPage.wodItems.forEach((item) => {
-                    $(".trWodRow[data-id='" + item.exerciceId + "'] input").val(item.nbReps); 
+                    $(".trWodRow[data-id='" + item.exerciceId + "'] input").val(item.quantite); 
                 });
                 
                 result.resolve();
@@ -161,12 +163,60 @@
                     wodPage.checkSelectedItems();
                 })
             });
+        },
+        // Edit the WOD Name
+        editWodName:() => {
+            if ($("#btnEditWodName").hasClass('edit')) {
+                let object = new injectableObject();
+                object.value = $("#tdWodName").html();
+                pageManager.renderElement('wod/editWodName', [object], 'tdWodName').done(()=>{
+                    $("#btnEditWodName").toggleClass(['edit','save']);
+                });
+            }
+            if ($("#btnEditWodName").hasClass('save')) {
+                $("#tdWodName").html($("#txtWodName").val());
+                $("#btnEditWodName").toggleClass(['edit','save']);
+            }
+        },
+        // Start the wod
+        startWod:() => {
+
+            // Check currentWod
+            if (wodPage.currentWod.id) return;
+            
+            // Check exercices
+            let exercices = wodPage.wodItems.filter((item) => { if (item.type=='EXO') return item; });
+            if (exercices.length==0) {
+                return;
+            }
+
+            // exit name edition mode
+            if ($("#btnEditWodName").hasClass('save')) wodPage.editWodName();
+            $("#btnEditWodName").hide();
+            
+            // Switch to display mode
+            $("#btnWodAddExo").hide();
+            $("#btnWodAddRest").hide();
+            $("#btnWodAddSerie").hide();
+            $("#tblWodItems #btnDeleteExerc").hide();
+            $(".trWodRow input").attr('readonly', true);
+            $(".trWodRow input").toggleClass('readonly');
+            
+            // Create WOD
+            let wodName = $("#tdWodName").html();
+            let idRandom = new Date().getTime();
+            wodPage.currentWod = new Wod(idRandom, wodName, wodPage.wodItems);
+            
+            // Add to recent
+
+            // start wod
+            console.log('start wod');
         }
     }
     wodPage.initialise().done(() => {
-        // update current datetime
+        // update current wod name
         let date = new Date();
-        $("#divDateWod").html(date.toLocaleDateString() + ' à ' + date.toLocaleTimeString());
+        $("#tdWodName").html("Wod du " + date.toLocaleDateString() + ' à ' + date.toLocaleTimeString());
 
         // buttons clic
         $("#btnWodAddExo").click(()=>{
@@ -177,6 +227,9 @@
         });
         $("#btnWodAddSerie").click(()=>{
             wodPage.addWodSerieItem();
+        });
+        $("#btnEditWodName").click(()=>{
+            wodPage.editWodName();
         });
     });
 </script>

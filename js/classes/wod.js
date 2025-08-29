@@ -1,19 +1,20 @@
 class WodItem extends injectableObject {
-	constructor(type, exoId, nom, reps, infos) {
+	constructor(type, exoId, nom, qte, infos) {
 		super();
 		this.type = type;
 		this.exerciceId = exoId;
 		this.nom = nom;
-		this.nbReps = reps;
+		this.quantite = qte;
 		this.infos = infos;
 	}
 }
 
 class Wod extends injectableObject {
-	constructor(id , listItems) {
+	constructor(id, nom, wodItems) {
 		super();
 		this.id = id;
-		this.listItems = listItems;
+		this.nom = nom;
+		this.wodItems = wodItems;
 		this.startDate = null;
 		this.endDate = null;
 	}
