@@ -15,14 +15,20 @@
         let type = $('#btnToggleEx').data("type");
         if (type=='user') {
            dataManager.getDataFromStorage('customExerc').done((results) => {
-                exoPage.showExercices(results);
-                $('#btnToggleEx').data("type","all");
-                $('#btnToggleEx').text('Tous');
+               if (results && results.length>0)
+                    exoPage.showExercices(results);
+               else 
+                    exoPage.showExercices([]);
+               $('#btnToggleEx').data("type","all");
+               $('#btnToggleEx').text('Tous');
            });   
         }
         if (type=='all') {
            dataManager.getExercices().done((results) => {
-                exoPage.showExercices(results);
+               if (results && results.length>0)
+                    exoPage.showExercices(results);
+               else 
+                    exoPage.showExercices([]);
                 $('#btnToggleEx').data("type","user");
                 $('#btnToggleEx').text('Utilisateur');
            });   
