@@ -1,5 +1,5 @@
 class Exercice extends injectableObject {
-	constructor(i, n, c, z, di, de, custom, et) {
+	constructor(i, n, c, z, di, de, custom, et, unit) {
 		super();
 		this.id = i;
 	    this.nom = n;
@@ -9,5 +9,6 @@ class Exercice extends injectableObject {
 	    this.description = de;
 		this.isCustom = custom;
 		this.etapes = et;
+		this.unite = unit;
 	}
 }
