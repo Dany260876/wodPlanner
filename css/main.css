@@ -241,6 +241,9 @@ button {
 #tblWodItems input {
     width: 30px;
 }
+#tblWodItems .selUnite {
+    width: 50px;
+}
 
 #tblWodTitleDate #btnEditWodName[class='imgButtonSmall edit'] {
     background-image: url("../res/modify.png");
@@ -290,6 +293,32 @@ button {
 }
 
 .trWodRow input[class='readonly'] {border-style: none;}
+.trWodRow .selUnite[class='selUnite readonly'] {border-style: none;appearance: none;user-select: none;}
+
+
+/*
+* Wod Running page
+*/
+
+.trWodItemRow[data-type='REST'] {
+    color:red;
+}
+.trWodItemRow[data-type='EXO'] {
+    color: seagreen;
+}
+.trWodItemRow[data-type='SERIE'] {
+    color: blue;
+}
+.trWodItemRow[data-type='REST'] .btnWodItemIcon {
+    background-image: url("../res/stop_sign.png");
+}
+.trWodItemRow[data-type='EXO'] .btnWodItemIcon {
+    background-image: url("../res/next.png");
+}
+.trWodItemRow[data-type='SERIE'] .btnWodItemIcon {
+    background-image: url("../res/redo.png");
+}
+
 
 /*
 * Home page
@@ -355,7 +384,7 @@ button {
     height: 60px;
     width: 100px;
 }
-#btnPopinCancel {
+#btnPopinCancel, #btnPopinAnnulerWod {
     background-image: url("../res/close.png");
     height: 60px;
     width: 100px;

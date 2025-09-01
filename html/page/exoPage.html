@@ -120,10 +120,11 @@
             var zone = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
             var diff = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
             var desc = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
-            var etap = arrayResult[cpt].substr(arrayResult[cpt].indexOf('=')+1);
+            var etap = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
+            var unit = arrayResult[cpt].substr(arrayResult[cpt++].indexOf('=')+1);
             
             // add new exercice
-            dataManager.addCustomExercice(new Exercice(id, nom, categ, zone, diff, desc, true, etap));
+            dataManager.addCustomExercice(new Exercice(id, nom, categ, zone, diff, desc, true, etap, unit));
             
             // refresh list
             exoPage.searchExercices();

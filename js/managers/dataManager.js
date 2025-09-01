@@ -15,23 +15,24 @@ var dataManager = {
 			var listData = [];
 			jsonData.forEach((d) => { 
 				if (name=='categ') listData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes));
-				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes));
+				if (name=='exerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes, d.unite));
+				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes, d.unite));
 				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') listData.push(new Zone(d.id, d.nom));
+				if (name=='wodRecent') listData.push(new Wod(d.id, d.nom, d.wodItems, d.startDate, d.endDate));
 			});
 			result.resolve(listData);
 		}
 		return result.promise();
 	},
     getDataFromJson: (name) => {
-        var result = $.Deferred();
+        let result = $.Deferred();
 		$.getJSON("json/"+ name +".json", function(data) {
 			// create array of injectableObject
-			var jsonData = [];
+			let jsonData = [];
 			data.forEach((d) => { 
 				if (name=='categ') jsonData.push(new Categorie(d.id, d.nom, d.description));
-				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes));
+				if (name=='exerc') jsonData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, false, d.etapes, d.unite));
 				if (name=='diff') jsonData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') jsonData.push(new Zone(d.id, d.nom));
 			});
@@ -47,9 +48,9 @@ var dataManager = {
 		return dataManager.getDataFromStorage('categ');
 	},
 	getExercices: () => {
-		var result = $.Deferred();
-		var ex1 = dataManager.getDataFromStorage('exerc');
-		var ex2 = dataManager.getDataFromStorage('customExerc');
+		let result = $.Deferred();
+		let ex1 = dataManager.getDataFromStorage('exerc');
+		let ex2 = dataManager.getDataFromStorage('customExerc');
 		$.when(ex1, ex2).done((data1, data2) => {
 			if (data2!=null)
 				result.resolve(data1.concat(data2));
@@ -66,9 +67,9 @@ var dataManager = {
 		return dataManager.getDataFromStorage('zones');
 	},
 	getCategorie: (id) => {
-		var result = $.Deferred();
+		let result = $.Deferred();
 		dataManager.getCategories().done((data) => {
-			var itemFound = null;
+			let itemFound = null;
 			data.forEach((item, index, arr) => {
 				if (item.id==id) itemFound = item;
 			});
@@ -80,9 +81,9 @@ var dataManager = {
 		return result.promise();
 	},
 	getDifficulte: (id) => {
-		var result = $.Deferred();
+		let result = $.Deferred();
 		dataManager.getDifficultes().done((data) => {
-			var itemFound = null;
+			let itemFound = null;
 			data.forEach((item, index, arr) => {
 				if (item.id==id) itemFound = item;
 			});
@@ -94,9 +95,9 @@ var dataManager = {
 		return result.promise();
 	},
 	getExercice: (id) => {
-		var result = $.Deferred();
+		let result = $.Deferred();
 		dataManager.getExercices().done((data) => {
-			var itemFound = null;
+			let itemFound = null;
 			data.forEach((item, index, arr) => {
 				if (item.id==id) itemFound = item;
 			});
@@ -122,9 +123,9 @@ var dataManager = {
 		return result.promise();
 	},
 	getZonesByIds: (listIds) => {
-		var result = $.Deferred();
+		let result = $.Deferred();
 		dataManager.getZones().done((data) => {
-			var items = [];
+			let items = [];
 			data.forEach((item, index, arr) => {
 				if (listIds.indexOf(item.id)>-1) items.push(item);
 			});
@@ -137,16 +138,16 @@ var dataManager = {
 	},
 	addCustomExercice: (newExercice) => {
 		dataManager.getDataFromStorage('customExerc').done((data) => {
-			var customExerciceList = [];
+			let customExerciceList = [];
 			if (data!=null) customExerciceList = customExerciceList.concat(data);
 			customExerciceList.push(newExercice);
 			window.localStorage.setItem('customExerc', JSON.stringify(customExerciceList));
 		});
 	},
 	deleteCustomExercice: (idExercice) => {
-		var result = $.Deferred();
+		let result = $.Deferred();
 		dataManager.getDataFromStorage('customExerc').done((customExerciceList) => {
-			var found = false;
+			let found = false;
 			$(customExerciceList).each(function(index, value) {
 				if (value.id==idExercice) {
 					found = true;
@@ -162,5 +163,13 @@ var dataManager = {
 			}
 		});
 		return result.promise();
+	},
+	addWodToRecent: (newWod) => {
+		dataManager.getDataFromStorage('wodRecent').done((data) => {
+			let wodFavoritesList = [];
+			if (data!=null) wodFavoritesList = wodFavoritesList.concat(data);
+			wodFavoritesList.push(newWod);
+			window.localStorage.setItem('wodRecent', JSON.stringify(wodFavoritesList));
+		});
 	},
 };

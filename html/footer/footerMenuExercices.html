@@ -52,6 +52,8 @@
                     $(data3).each(function() {
                         $("#selZone").append("<option value='" + this.id + "'>" + this.nom + "</option>");
                     });
+                    $("#selUnit").append("<option value='rep'>Répétitions</option>");
+                    $("#selUnit").append("<option value='sec'>Secondes</option>");
                 });
                 // display popin
                 popinManager.setCallbackFunction("exoPage.validateCreatePopin()");
