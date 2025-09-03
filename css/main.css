@@ -319,7 +319,29 @@ button {
     background-image: url("../res/redo.png");
 }
 
+.tblListWodItems .trWodItemRow {
+    font-size: 20px;
+}
+.btnHeaderWodRunning {
+    background-image: url("../res/stopwatch.png");
+    margin-left: -5px;
+    background-size: 25px;
+    height: 25px;
+    width: 25px;
+}
+.btnHeaderWodTerminated {
+    background-image: url("../res/thumbs_up.png");
+    margin-left: -5px;
+    background-size: 25px;
+    height: 25px;
+    width: 25px;
+}
 
+#tdHeaderRunningWod {
+    font-size: 25px;
+    font-variant-caps: all-small-caps;
+    padding-bottom: 5px;
+}
 /*
 * Home page
 */
