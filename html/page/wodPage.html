@@ -201,6 +201,12 @@
     var wodRunner = {
         currentWod: {},
         listWodItems: [],
+        index1stWodItem: 0,
+        indexCurrentWodItem:0,
+        loopCounter: 1,
+        timerDuration: 0,
+        timer: {},
+        
         // Start the wod
         startWod:() => {
             // Check currentWod
@@ -223,16 +229,103 @@
             
             // Add to recent
             // dataManager.addWodToRecent(wodRunner.currentWod);
-            
-            // start wod
+
+            // initial state
+            wodRunner.indexCurrentWodItem = 0;
+            wodRunner.index1stWodItem = 0;
+            wodRunner.loopCounter = 1;
             wodRunner.listWodItems.push(wodRunner.currentWod.wodItems[0]);
+
+            // render wod items
+            wodRunner.renderListWodItems();
+        },
+        // Render list of current wod items
+        renderListWodItems:() => {
             pageManager.renderElement('popin/popinWod', null, 'divPopin').done(() => {
                 pageManager.renderElement('wod/currentWodPopin', [wodRunner.currentWod], 'tdPopinContent').done(()=>{
                     pageManager.renderElement('wod/listWodItems', wodRunner.listWodItems, 'tdListWodItems').done(()=>{
+                        
+                        // update WOD advancement (check done states)
+                        let chkDoneList = $(".tblListWodItems #chkDone");
+                        chkDoneList.each((index, item) => {
+                            if (index!=wodRunner.indexCurrentWodItem) {
+                                $(item).prop('checked', true);
+                                $(item).prop('disabled', true);
+                            }
+                        });
+                        
+                        // show popin
                         popinManager.show();
+
+                        // execute current wod item if no user action needed (rest/loops)
+                        wodRunner.executeWodItem();
                     });
                 });
             });
+        },
+        // execute current wod item if no user action needed (rest/loops)
+        executeWodItem:() => {
+            // Get current woditem
+            let currentWodItem = wodRunner.currentWod.wodItems[wodRunner.indexCurrentWodItem];
+            
+            // if current WodItem unit is 'sec', start timer to perform action after a delay
+            if (currentWodItem.unite=='sec') {
+                // Hide checkbox done
+                const currentRow = $('.trWodItemRow')[wodRunner.indexCurrentWodItem];
+                const objChkDone = $(currentRow).find('#chkDone');
+                $(objChkDone).hide();
+                
+                // start timer
+                wodRunner.timerDuration = currentWodItem.quantite;
+                wodRunner.timer = setInterval(() => {
+                    wodRunner.timerDuration--;
+                    // check timer end
+                    if (wodRunner.timerDuration == 0) {
+                        clearInterval(wodRunner.timer);
+                        $(objChkDone).show();
+                        $(objChkDone).prop('checked', true);
+                        wodRunner.moveNextWodItem($(objChkDone));
+                    }
+                    // get current item and set countdown value
+                    let objTdQte = $(currentRow).children('.tdQteWodItem');
+                    $(objTdQte).html(wodRunner.timerDuration);
+                }, 1000);
+            }
+
+            // if current woditem is LOOP, go to 1st wod item and increment loopCounter
+            if (currentWodItem.type=='SERIE') {
+                const currentRow = $('.trWodItemRow')[wodRunner.indexCurrentWodItem];
+                let loopValue = $(currentRow).children('.tdQteWodItem').html();
+                if (wodRunner.loopCounter<loopValue) {
+                    wodRunner.loopCounter++;
+                    wodRunner.indexCurrentWodItem = wodRunner.index1stWodItem;
+                    wodRunner.listWodItems.splice(wodRunner.indexCurrentWodItem+1);
+                    wodRunner.renderListWodItems();
+                }
+                else {
+                    let objChkDone = $(currentRow).find('#chkDone');
+                    $(objChkDone).show();
+                    $(objChkDone).prop('checked', true);
+                    wodRunner.loopCounter = 1;
+                    wodRunner.index1stWodItem = wodRunner.indexCurrentWodItem + 1;
+                    wodRunner.moveNextWodItem($(objChkDone));
+                }
+            }
+        },
+        // move to next Wod item in list
+        moveNextWodItem:(obj) => {
+            let isChecked = $(obj).prop("checked");
+            if (isChecked) {
+                if (wodRunner.indexCurrentWodItem==wodRunner.currentWod.wodItems.length-1) {
+                    // wod completed
+                    console.log('WOD completed');
+                }
+                else {
+                    wodRunner.indexCurrentWodItem++;
+                    wodRunner.listWodItems.push(wodRunner.currentWod.wodItems[wodRunner.indexCurrentWodItem]);
+                    wodRunner.renderListWodItems();
+                }
+            }
         }
     };
     
