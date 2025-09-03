@@ -225,7 +225,7 @@
             wodRunner.currentWod = new Wod(idRandom, wodName, wodPage.wodItems);
             
             // add start date
-            wodRunner.currentWod.dateDebut = new Date().toUTCString();
+            wodRunner.currentWod.dateDebut = new Date();
             
             // Add to recent
             // dataManager.addWodToRecent(wodRunner.currentWod);
@@ -244,6 +244,28 @@
             pageManager.renderElement('popin/popinWod', null, 'divPopin').done(() => {
                 pageManager.renderElement('wod/currentWodPopin', [wodRunner.currentWod], 'tdPopinContent').done(()=>{
                     pageManager.renderElement('wod/listWodItems', wodRunner.listWodItems, 'tdListWodItems').done(()=>{
+
+                        // Build header text
+                        let txtExos = "Exercice " + ((wodRunner.indexCurrentWodItem - wodRunner.index1stWodItem) + 1) + "/" + (wodRunner.currentWod.wodItems.length - wodRunner.index1stWodItem);
+                        let txtButton = "<button class='imgButtonSmall btnHeaderWodRunning'></button>";
+                        let textSeries = "";
+                        
+                        // if current item is in loop : add loop headers
+                        let cptItemsLoop = 0;
+                        let currentIndex = wodRunner.index1stWodItem;
+                        let found = false;
+                        while (!found && currentIndex<wodRunner.currentWod.wodItems.length) {
+                            if (wodRunner.currentWod.wodItems[currentIndex].type == 'SERIE') {
+                                textSeries = "Série " + wodRunner.loopCounter + "/" + wodRunner.currentWod.wodItems[currentIndex].quantite;
+                                txtExos = "Exercice " + ((wodRunner.indexCurrentWodItem - wodRunner.index1stWodItem) + 1) + "/" + cptItemsLoop;
+                                found = true;
+                            }
+                            currentIndex++;
+                            cptItemsLoop++;
+                        }
+                        let textHeader = txtButton + " " + txtExos;
+                        if (textSeries!='') textHeader += " - " + textSeries;
+                        $("#tdHeaderRunningWod").html(textHeader);
                         
                         // update WOD advancement (check done states)
                         let chkDoneList = $(".tblListWodItems #chkDone");
@@ -318,7 +340,13 @@
             if (isChecked) {
                 if (wodRunner.indexCurrentWodItem==wodRunner.currentWod.wodItems.length-1) {
                     // wod completed
-                    console.log('WOD completed');
+                    wodRunner.currentWod.dateFin = new Date();
+                    // Change state
+                    $(".tblListWodItems #chkDone").prop('checked', true);
+                    $(".tblListWodItems #chkDone").prop('disabled', true);
+                    // display text
+                    let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
+                    $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
                 }
                 else {
                     wodRunner.indexCurrentWodItem++;
