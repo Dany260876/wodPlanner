@@ -1,13 +1,10 @@
-<div>
+<div class='divWodContent'>
     <table id='tblWodTitleDate'>
         <tr>
             <td id='tdWodName'></td>
             <td><button class='imgButtonSmall edit' id='btnEditWodName'/></td>
         </tr>
     </table>
-    <hr/>
-    <table id='tblWodItems'></table>
-    <br/>
     <table id='tblWodActions'>
         <tr>
             <td><button class='imgButtonBig' id='btnWodAddExo'>Exercices</button></td>
@@ -15,6 +12,8 @@
             <td><button class='imgButtonBig' id='btnWodAddSerie'>Série</button></td>
         </tr>
     </table>
+    <hr/>
+    <table id='tblWodItems'></table>   
 </div>
 <script>
     // wod page actions
@@ -39,6 +38,18 @@
             let idRandom = new Date().getTime();
             wodPage.wodItems.push(new WodItem('SERIE', idRandom, "Série (Loop)", 5, "rep"));
             wodPage.renderWodItems();
+        },
+        // Edit wod item quantity
+        editWodItemQtt:(obj) => {
+            let parent = $(obj).parents('.trWodRow')[0];
+            let itemId = $(parent).data('id');
+            let currentValue = $(obj).val()*1;
+            wodPage.wodItems.forEach((item) => { 
+                if (item.exerciceId == itemId) {
+                    item.quantite=currentValue;
+                    return;
+                } 
+            });
         },
         // Add WOD item
         addWodItem: () => {
@@ -194,6 +205,13 @@
             $(".trWodRow input").toggleClass('readonly');
             $(".trWodRow .selUnite option").attr('disabled', 'disabled');
             $(".trWodRow .selUnite").toggleClass('readonly');
+        },
+        // Hide wod running popin
+        hideWodRunningPopin:() => {
+            // Hide popin
+            popinManager.hide();
+            // Display running wod information
+            console.log(wodRunner.currentWod);
         }
     };
 
@@ -226,9 +244,6 @@
             
             // add start date
             wodRunner.currentWod.dateDebut = new Date();
-            
-            // Add to recent
-            // dataManager.addWodToRecent(wodRunner.currentWod);
 
             // initial state
             wodRunner.indexCurrentWodItem = 0;
@@ -279,6 +294,9 @@
                         // show popin
                         popinManager.show();
 
+                        // Ensure last item is visible
+                        $('.divListWodItems').scrollTop(9999);
+                        
                         // execute current wod item if no user action needed (rest/loops)
                         wodRunner.executeWodItem();
                     });
@@ -305,8 +323,6 @@
                     if (wodRunner.timerDuration == 0) {
                         clearInterval(wodRunner.timer);
                         $(objChkDone).show();
-                        $(objChkDone).prop('checked', true);
-                        wodRunner.moveNextWodItem($(objChkDone));
                     }
                     // get current item and set countdown value
                     let objTdQte = $(currentRow).children('.tdQteWodItem');
@@ -339,14 +355,7 @@
             let isChecked = $(obj).prop("checked");
             if (isChecked) {
                 if (wodRunner.indexCurrentWodItem==wodRunner.currentWod.wodItems.length-1) {
-                    // wod completed
-                    wodRunner.currentWod.dateFin = new Date();
-                    // Change state
-                    $(".tblListWodItems #chkDone").prop('checked', true);
-                    $(".tblListWodItems #chkDone").prop('disabled', true);
-                    // display text
-                    let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
-                    $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
+                    wodRunner.terminateWod();
                 }
                 else {
                     wodRunner.indexCurrentWodItem++;
@@ -354,6 +363,22 @@
                     wodRunner.renderListWodItems();
                 }
             }
+        },
+        // Terminate WOD
+        terminateWod:() => {
+            // wod completed
+            wodRunner.currentWod.dateFin = new Date();
+
+            // Add to recent
+            // dataManager.addWodToRecent(wodRunner.currentWod);
+            
+            // Change state
+            $(".tblListWodItems #chkDone").prop('checked', true);
+            $(".tblListWodItems #chkDone").prop('disabled', true);
+            
+            // display text
+            let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
+            $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
         }
     };
     

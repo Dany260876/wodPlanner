@@ -321,6 +321,7 @@ button {
 
 .tblListWodItems .trWodItemRow {
     font-size: 20px;
+    height: 40px;
 }
 .btnHeaderWodRunning {
     background-image: url("../res/stopwatch.png");
@@ -338,10 +339,39 @@ button {
 }
 
 #tdHeaderRunningWod {
-    font-size: 25px;
+    font-size: 30px;
     font-variant-caps: all-small-caps;
     padding-bottom: 5px;
+    color: red;
 }
+
+td.tdUnitWodItem {
+    width: 35px;
+}
+
+input#chkDone {
+    width: 25px;
+    height: 25px;
+}
+
+td.tdQteWodItem {
+    width: 25px;
+}
+
+td.tdNomWodItem {
+    width: max-content;
+}
+
+.divWodContent {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.divListWodItems {
+    height: 480px;
+    overflow-y: scroll;
+}
+
 /*
 * Home page
 */
