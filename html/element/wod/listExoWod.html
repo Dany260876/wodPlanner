@@ -3,7 +3,7 @@
         <tr class='trWodRow' data-id='[object.exerciceId]' data-type='[object.type]'>
             <td><button class='imgButtonSmall btnWodItemIcon'/></td>
             <td class='tdResultMain'>[object.nom]</td>
-            <td><input type="number" min="1" max="999" value='10'></input></td>
+            <td><input type="number" min="1" max="999" value='10' onblur="wodPage.editWodItemQtt(this)"></input></td>
             <td>
                 <select class='selUnite'>
                     <option value='rep'>rep</option>
