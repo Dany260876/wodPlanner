@@ -217,7 +217,7 @@ button {
 /*
 * WOD Page
 */
-#btnStartWod {
+.btnStartWod {
     background-image: url("../res/go.png");
 }
 #btnRecentWod {
@@ -339,7 +339,7 @@ button {
 }
 
 #tdHeaderRunningWod {
-    font-size: 30px;
+    font-size: 25px;
     font-variant-caps: all-small-caps;
     padding-bottom: 5px;
     color: red;
@@ -436,11 +436,27 @@ td.tdNomWodItem {
     height: 60px;
     width: 100px;
 }
-#btnPopinCancel, #btnPopinAnnulerWod {
+#btnPopinCancel {
     background-image: url("../res/close.png");
     height: 60px;
     width: 100px;
 }
+.btnCancelButton {
+    background-image: url("../res/close.png");
+    height: 60px;
+    width: 100px;
+}
+.btnCloseButton {
+    background-image: url("../res/apply.png");
+    height: 60px;
+    width: 100px;
+}
+.btnNewWod {
+    background-image: url("../res/redo.png");
+    height: 60px;
+    width: 100px;
+}
+
 .tblPopinYesNo {
     width: 100%;
     height: 30%;

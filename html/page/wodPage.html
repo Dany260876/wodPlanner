@@ -42,11 +42,22 @@
         // Edit wod item quantity
         editWodItemQtt:(obj) => {
             let parent = $(obj).parents('.trWodRow')[0];
-            let itemId = $(parent).data('id');
+            let itemUid = $(parent).data('uid');
             let currentValue = $(obj).val()*1;
             wodPage.wodItems.forEach((item) => { 
-                if (item.exerciceId == itemId) {
+                if (item.uid == itemUid) {
                     item.quantite=currentValue;
+                    return;
+                } 
+            });
+        },
+        editWodItemUnit:(obj) => {
+            let parent = $(obj).parents('.trWodRow')[0];
+            let itemUid = $(parent).data('uid');
+            let currentValue = $(obj).val();
+            wodPage.wodItems.forEach((item) => { 
+                if (item.uid == itemUid) {
+                    item.unite=currentValue;
                     return;
                 } 
             });
@@ -89,9 +100,9 @@
             pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
                 $("#tblWodItems #btnDeleteExerc").on("click", (obj) => {
                     let parent = $(obj.currentTarget).parents('.trWodRow');
-                    let id = $(parent).data('id');
+                    let uid = $(parent).data('uid');
                     wodPage.wodItems.forEach((item, index) => {
-                        if (item.exerciceId==id) {
+                        if (item.uid==uid) {
                             wodPage.wodItems.splice(index,1);
                         };
                     });
@@ -116,15 +127,17 @@
             });
             dataManager.getExercicesByIds(listIdExoSelected).done(function(listExo) {
                 let listWodItems = [];
-                listExo.forEach((exo) => {
-                    listWodItems.push(new WodItem('EXO', exo.id, exo.nom, 10, exo.unite));
+                listExo.forEach((exo, index) => {
+                    let item = new WodItem('EXO', exo.id, exo.nom, 10, exo.unite)
+                    item.uid = "" + new Date().getTime() + index;
+                    listWodItems.push(item);
                 });
                 wodPage.wodItems = wodPage.wodItems.concat(listWodItems);
                 wodPage.renderWodItems();
             });
         },
         // Select a Wod on the selection list (add it to selecteditems)
-        selectWodItem:(obj) => {
+        selectWodItem: (obj) => {
             let parent = $(obj).parents('.trWodItem');
             let dataKeyForm = $(parent).children('.keyForm');
             let id = $(dataKeyForm).attr('field');
@@ -137,7 +150,7 @@
             }
         },
         // check selected items on content change
-        checkSelectedItems:() => {
+        checkSelectedItems: () => {
             if (wodPage.selectedWodItems.length>0) {
                 $.each($(".trWodItem"), function(i, item) {
                     let tdData = $(item).children('.keyForm');
@@ -370,15 +383,30 @@
             wodRunner.currentWod.dateFin = new Date();
 
             // Add to recent
-            // dataManager.addWodToRecent(wodRunner.currentWod);
+            dataManager.addWodToRecent(wodRunner.currentWod);
             
             // Change state
             $(".tblListWodItems #chkDone").prop('checked', true);
             $(".tblListWodItems #chkDone").prop('disabled', true);
+
+            // Switch buttons
+            $("#btnPopinAnnulerWod").toggleClass(["btnCancelButton", "btnCloseButton"]);
+            $("#btnPopinAnnulerWod").html("Fermer");
+            $(".btnStartWod").html("Nouveau");
+            $(".btnStartWod").toggleClass(["btnStartWod", "btnNewWod"]);
             
             // display text
             let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
             $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
+
+            // Display WOD stats
+            // TODO
+            
+            // set btn new wod action
+            $('.btnNewWod').click(function() {
+                pageManager.renderFooter("footerMenuWod");
+                pageManager.renderPage("wodPage");
+            });
         }
     };
     
