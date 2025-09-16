@@ -221,10 +221,15 @@
         },
         // Hide wod running popin
         hideWodRunningPopin:() => {
+
+            // add results zone
+            $('.divWodContent').append("<div id='divWodResults'></div>");
+            
             // Hide popin
             popinManager.hide();
-            // Display running wod information
-            console.log(wodRunner.currentWod);
+            
+            // Display running wod stats
+            statisticsManager.showWodZonesStatistics(wodRunner.currentWod, 'divWodResults', 'Détails du WOD');
         }
     };
 
@@ -398,9 +403,6 @@
             // display text
             let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
             $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
-
-            // Display WOD stats
-            // TODO
             
             // set btn new wod action
             $('.btnNewWod').click(function() {

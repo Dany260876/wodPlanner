@@ -19,7 +19,7 @@ var dataManager = {
 				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes, d.unite));
 				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') listData.push(new Zone(d.id, d.nom));
-				if (name=='wodRecent') listData.push(new Wod(d.id, d.nom, d.wodItems, d.startDate, d.endDate));
+				if (name=='wodRecent') listData.push(new Wod(d.id, d.nom, d.wodItems, d.dateDebut, d.dateFin));
 			});
 			result.resolve(listData);
 		}

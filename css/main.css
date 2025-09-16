@@ -295,6 +295,16 @@ button {
 .trWodRow input[class='readonly'] {border-style: none;}
 .trWodRow .selUnite[class='selUnite readonly'] {border-style: none;appearance: none;user-select: none;}
 
+#divWodResults {
+    height: 200px;
+    max-width: 400px;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+#tdWodName {
+    font-weight: bold;
+    font-size: large;
+}
 
 /*
 * Wod Running page
