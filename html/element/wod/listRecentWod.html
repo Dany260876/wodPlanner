@@ -1,0 +1,60 @@
+<div class='divRecentWodList' id='divRecentWods'>
+    <table class='tblRecentListWod'>
+        [[
+            <tr class='trRecentWodRow' data-id='[object.id]'>
+                <td class='tdRecentWodName'>[object.nom]</td>
+                <td class='tdRecentWodBtnAction'><button class='imgButtonSmall' id='btnRunWod' onclick='recentWod.runRecentWod(this)'/></td>
+                <td class='tdRecentWodBtnAction'><button class='imgButtonSmall' id='btnShowDetails' onclick='recentWod.showDetails(this)'/></td>
+                <td class='tdRecentWodBtnAction'><button class='imgButtonSmall' id='btnDeleteExerc' onclick='recentWod.deleteWod(this)'/></td>
+            </tr>
+        ]]
+    </table>
+</div>
+<script>
+    var recentWod = {
+        currentWod : {},
+        showRecentList: () => {
+            // get recents and display content
+            dataManager.getDataFromStorage('wodRecent').done((data) => {
+                pageManager.renderElement('wod/listRecentWod',data,'tdContent');  
+            });
+        },
+        runRecentWod: (obj) => {
+            let parent = $(obj).parents('.trRecentWodRow');
+            let id = $(parent).data('id');
+            console.log(id);
+        },
+        deleteWod: (obj) => {
+            let parent = $(obj).parents('.trRecentWodRow');
+            let id = $(parent).data('id');
+            popinManager.setCallbackFunction('recentWod.confirmDeleteWod(' + id + ')');
+            popinManager.showConfirmation('\nVoulez-vous supprimer ce WOD de la liste des Récents ?');
+        },
+        confirmDeleteWod: (id) => {
+            dataManager.deleteRecentWod(id).done(() => {
+                recentWod.showRecentList();
+            });
+        },
+        showDetails: (obj) => {
+            let parent = $(obj).parents('.trRecentWodRow');
+            let id = $(parent).data('id');
+            dataManager.getRecentWod(id).done((wod) => {
+                recentWod.currentWod = wod;
+                popinManager.load('OK').done(() => {
+                    pageManager.renderElement('wod/wodDetails',[recentWod.currentWod],'tdPopinContent').done(()=>{
+                        // Display wod items 
+                        pageManager.renderElement('wod/wodDetailsItems',recentWod.currentWod.wodItems,'tdListWodItems').done(()=>{
+                            statisticsManager.showWodZonesStatistics(recentWod.currentWod, 'divWodDetailStats', 'Zones de travail');
+                            popinManager.show();
+                            // resize char content
+                            $(".canvasjs-chart-canvas").width('100%');
+                            let w = $(".canvasjs-chart-canvas").width();
+                            $(".canvasjs-chart-canvas").height(w-70);
+
+                        });
+                    });  
+                });
+            });
+        }
+    }
+</script>

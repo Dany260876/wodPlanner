@@ -53,6 +53,7 @@ var popinManager = {
 			'text':text
 		});
 		pageManager.renderElement('popin/popinYesNo', params, 'divPopin').done(() => {
+			popinManager.show();
 		});
 	},
 	validateYesNo: () => {
