@@ -19,7 +19,13 @@ var dataManager = {
 				if (name=='customExerc') listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes, d.unite));
 				if (name=='diff') listData.push(new Difficulte(d.id, d.nom));
 				if (name=='zones') listData.push(new Zone(d.id, d.nom));
-				if (name=='wodRecent') listData.push(new Wod(d.id, d.nom, d.wodItems, d.dateDebut, d.dateFin));
+				if (name=='wodRecent') {
+					let wodItems = [];
+					d.wodItems.forEach((item) => {
+						wodItems.push(new WodItem(item.type, item.exerciceId, item.nom, item.quantite, item.unite));
+					});
+					listData.push(new Wod(d.id, d.nom, wodItems, d.dateDebut, d.dateFin));	
+				}
 			});
 			result.resolve(listData);
 		}
@@ -171,5 +177,37 @@ var dataManager = {
 			wodFavoritesList.push(newWod);
 			window.localStorage.setItem('wodRecent', JSON.stringify(wodFavoritesList));
 		});
+	},
+	deleteRecentWod: (wodId) => {
+		let result = $.Deferred();
+		dataManager.getDataFromStorage('wodRecent').done((recentWods) => {
+			let found = false;
+			$(recentWods).each(function(index, value) {
+				if (value.id==wodId) {
+					found = true;
+					recentWods.splice(index, 1);
+				}
+			});
+			if (found) {
+				window.localStorage.setItem('wodRecent', JSON.stringify(recentWods));
+				result.resolve();
+			} 
+			else {
+				result.reject();
+			}
+		});
+		return result.promise();
+	},
+	getRecentWod: (wodId) => {
+		let result = $.Deferred();
+		dataManager.getDataFromStorage('wodRecent').done((recentWods) => {
+			$(recentWods).each(function(index, value) {
+				if (value.id==wodId) {
+					result.resolve(value); 
+				}
+			});
+			result.reject();
+		});
+		return result.promise();
 	},
 };

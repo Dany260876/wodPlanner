@@ -11,7 +11,7 @@ var statisticsManager = {
 			stats.forEach((stat) => maxValue = maxValue + stat.qte);
 			stats.forEach((stat) => {
 				dataStats.push({
-					y: (stat.qte*100/maxValue) , label: stat.zone
+					y: (stat.qte*100/maxValue) , name: stat.zone
 				});
 			});
 
@@ -19,9 +19,9 @@ var statisticsManager = {
 			let configChart = [];
 			configChart.push({
 				type: "pie",
-				startAngle: 240,
+				showInLegend: true,
 				yValueFormatString: "##0.00'%'",
-				indexLabel: "{label} {y}",
+				indexLabel: "{y}",
 				dataPoints: dataStats
 			});
 			let chart = new CanvasJS.Chart(divTargetId, {

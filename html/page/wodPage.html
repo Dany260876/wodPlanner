@@ -29,14 +29,16 @@
         },
         // Add Rest item
         addWodRestItem:() => {
-            let idRandom = new Date().getTime();
-            wodPage.wodItems.push(new WodItem('REST', idRandom, "Repos (secondes)", 30, "sec"));
+            let item = new WodItem('REST', new Date().getTime(), "Repos (secondes)", 30, "sec");
+            item.uid = "" + new Date().getTime();
+            wodPage.wodItems.push(item);
             wodPage.renderWodItems();
         },
         // Add Rest item
         addWodSerieItem:() => {
-            let idRandom = new Date().getTime();
-            wodPage.wodItems.push(new WodItem('SERIE', idRandom, "Série (Loop)", 5, "rep"));
+            let item = new WodItem('SERIE', new Date().getTime(), "Série (Loop)", 5, "rep");
+            item.uid = "" + new Date().getTime();
+            wodPage.wodItems.push(item);
             wodPage.renderWodItems();
         },
         // Edit wod item quantity
