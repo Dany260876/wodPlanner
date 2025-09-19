@@ -10,11 +10,11 @@ var popinManager = {
 	},
 	hide: () => {
 		$("#divPopin").hide();
-		$(".tblContent").show();
+		$(".divMainContent").show();
 	},
 	show: () => {
 		$("#divPopin").show();
-        $(".tblContent").hide();
+        $(".divMainContent").hide();
 	},
 	validate: () => {
 		// get keys & values and build result

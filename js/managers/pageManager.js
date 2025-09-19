@@ -5,7 +5,7 @@ var pageManager = {
 	renderPage: (pageName, data) => {
 		var result = $.Deferred();
 		templateHelper.buildTemplate('page/' + pageName, data).done(function(res) {
-			$('#tdContent').html(res);
+			$('#divContent').html(res);
 			result.resolve(res);
 		})
 		.fail(function() {
@@ -27,7 +27,7 @@ var pageManager = {
 	renderFooter: (footerPageName) => {
 		var result = $.Deferred();
 		templateHelper.buildTemplate('footer/' + footerPageName).done(function(res) {
-			$('#tdFooter').html(res);
+			$('#divFooter').html(res);
 			result.resolve(res);
 		})
 		.fail(function() {
