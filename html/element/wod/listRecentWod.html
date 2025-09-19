@@ -16,7 +16,7 @@
         showRecentList: () => {
             // get recents and display content
             dataManager.getDataFromStorage('wodRecent').done((data) => {
-                pageManager.renderElement('wod/listRecentWod',data,'tdContent');  
+                pageManager.renderElement('wod/listRecentWod',data,'divContent');  
             });
         },
         runRecentWod: (obj) => {
