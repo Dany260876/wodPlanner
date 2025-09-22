@@ -2,14 +2,14 @@
     <table id='tblWodTitleDate'>
         <tr>
             <td id='tdWodName'></td>
-            <td><button class='imgButtonSmall edit' id='btnEditWodName'/></td>
+            <td><button class='imgButtonSmall edit' id='btnEditWodName'/><img/></td>
         </tr>
     </table>
     <table id='tblWodActions'>
         <tr>
-            <td><button class='imgButtonBig' id='btnWodAddExo'>Exercices</button></td>
-            <td><button class='imgButtonBig' id='btnWodAddRest'>Repos</button></td>
-            <td><button class='imgButtonBig' id='btnWodAddSerie'>Série</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddExo'><img/><br/>Exercices</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddRest'><img/><br/>Repos</button></td>
+            <td><button class='imgButtonBig' id='btnWodAddSerie'><img/><br/>Série</button></td>
         </tr>
     </table>
     <hr/>
@@ -282,7 +282,7 @@
 
                         // Build header text
                         let txtExos = "Exercice " + ((wodRunner.indexCurrentWodItem - wodRunner.index1stWodItem) + 1) + "/" + (wodRunner.currentWod.wodItems.length - wodRunner.index1stWodItem);
-                        let txtButton = "<button class='imgButtonSmall btnHeaderWodRunning'></button>";
+                        let txtButton = "<button class='imgButtonSmall btnHeaderWodRunning'><img/></button>";
                         let textSeries = "";
                         
                         // if current item is in loop : add loop headers
@@ -398,12 +398,12 @@
 
             // Switch buttons
             $("#btnPopinAnnulerWod").toggleClass(["btnCancelButton", "btnCloseButton"]);
-            $("#btnPopinAnnulerWod").html("Fermer");
-            $(".btnStartWod").html("Nouveau");
+            $("#btnPopinAnnulerWod").html("<img/><br/>Fermer");
+            $(".btnStartWod").html("<img/><br/>Nouveau");
             $(".btnStartWod").toggleClass(["btnStartWod", "btnNewWod"]);
             
             // display text
-            let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'></button>";
+            let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'><img/></button>";
             $("#tdHeaderRunningWod").html(txtButton + " WOD Terminé !");
             
             // set btn new wod action
