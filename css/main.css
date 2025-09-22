@@ -3,6 +3,7 @@
 */ 
 * {
     font-family: monospace;
+    color: #3b3b3b;
 }
 
 /* 
@@ -11,6 +12,7 @@
 .divMainContent {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 .divHeader {
     background-color: white;
@@ -48,6 +50,150 @@
     height: 60px;
 }
 
+/*
+* Buttons
+*/
+
+button {
+    border-width: thin;
+    border-color: #f3f3f3;
+    border-style: solid;
+}
+.imgButtonSmall {
+    background-color: white;
+    border-style: none;
+}
+.imgButtonBig {
+    font-size: 10px;
+    background-color: #ffffff;
+    min-width: 80px;
+    min-height: 60px;
+}
+.imgButtonBig img {
+    padding-bottom: 5px;
+}
+
+#btnClearSearch img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    width: 20px;
+}
+#btnHome img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10.25V20C3 20.5523 3.44772 21 4 21H8.5C9.05228 21 9.5 20.5523 9.5 20V14H14.5V20C14.5 20.5523 14.9477 21 15.5 21H20C20.5523 21 21 20.5523 21 20V10.25C21 9.93524 20.8518 9.63885 20.6 9.45L12 3L3.4 9.45C3.14819 9.63885 3 9.93524 3 10.25Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnToggleEx.User img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 21V17C4 15.8954 4.89543 15 6 15H18C19.1046 15 20 15.8954 20 17V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnToggleEx.All img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5H7V7H5V5Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 11H7V13H5V11Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 17H7V19H5V17Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 5H13V7H11V5Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 11H13V13H11V11Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 17H13V19H11V17Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 5H19V7H17V5Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 11H19V13H17V11Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 17H19V19H17V17Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnCreateEx img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V16M16 12H8M6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnExercices img {
+    content: url('data:image/svg+xml,<svg width="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 6H21.5M9.5 12H21.5M9.5 18H21.5M2 6L3.30628 7.30628C3.41599 7.41599 3.59127 7.42394 3.71047 7.32461L6.5 5M2 12L3.30628 13.3063C3.41599 13.416 3.59127 13.4239 3.71047 13.3246L6.5 11M2 18L3.30628 19.3063C3.41599 19.416 3.59127 19.4239 3.71047 19.3246L6.5 17" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnWod img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7V12L15 15M17 18L19 20L23 16M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C13.0452 22 14.053 21.8396 15 21.5422" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnStats img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3V21H21M7 16L12.25 10.75L15.75 14.25L21 9" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+#btnPopinFermer img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V18C12 19.6569 10.6569 21 9 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H9C10.6569 3 12 4.34315 12 6V7M17 8L21 12L17 16M9 12H19" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnPopinOk img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11L12 14L22 4M21 12V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H16" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnPopinCancel img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V18C12 19.6569 10.6569 21 9 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H9C10.6569 3 12 4.34315 12 6V7M17 8L21 12L17 16M9 12H19" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnPopinYes img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11L12 14L22 4M21 12V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H16" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnPopinNo img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V18C12 19.6569 10.6569 21 9 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H9C10.6569 3 12 4.34315 12 6V7M17 8L21 12L17 16M9 12H19" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.btnCancelButton img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V18C12 19.6569 10.6569 21 9 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H9C10.6569 3 12 4.34315 12 6V7M17 8L21 12L17 16M9 12H19" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.btnCloseButton img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9506 11C21.9833 11.3289 22 11.6625 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C13.4222 2 14.7751 2.2969 16 2.83209M9 11L12 14L22 4" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.btnNewWod img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.3861 17.7447C20.0429 18.2556 21 17.7875 21 16.9554V7.04464C21 6.21249 20.0429 5.7444 19.3861 6.25529L13.0149 11.2106C12.5001 11.611 12.5001 12.389 13.0149 12.7894L19.3861 17.7447Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.3861 17.7447C11.0429 18.2556 12 17.7875 12 16.9554V7.04464C12 6.21249 11.0429 5.7444 10.3861 6.25529L4.01488 11.2106C3.50014 11.611 3.50013 12.389 4.01488 12.7894L10.3861 17.7447Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.btnStartWod img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.61394 17.7449C3.95708 18.2558 3 17.7877 3 16.9555V7.04482C3 6.21267 3.95708 5.74458 4.61394 6.25547L10.9851 11.2108C11.4999 11.6112 11.4999 12.3892 10.9851 12.7895L4.61394 17.7449Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6139 17.7449C12.9571 18.2558 12 17.7877 12 16.9555V7.04482C12 6.21267 12.9571 5.74458 13.6139 6.25547L19.9851 11.2108C20.4999 11.6112 20.4999 12.3892 19.9851 12.7895L13.6139 17.7449Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnRecentWod img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10H21M16 2V6M8 2V6M7 14H15M7 18H10M5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnWodItemsClear img {
+     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+     width: 20px;
+}
+
+#btnDeleteExerc img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    width: 20px;
+}
+
+#btnShowDetails img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14L22 22M16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    width: 20px;
+}
+
+#btnValidateLogin img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L9 18L21 6" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+#btnWodAddExo, #btnWodAddRest, #btnWodAddSerie {
+    width: 75px;
+}
+#btnWodAddExo img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 11.5H15L13 14L11 9L9.5 11.5H8M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    padding-bottom: 0px;
+    padding-top: 2px;
+}
+#btnWodAddRest img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H21.1667L17 7H21.1667M12 6V12L16 16M13 2.04938C12.6711 2.01672 12.3375 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6625 21.9833 11.3289 21.9506 11" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    padding-bottom: 0px;
+    padding-top: 2px;
+}
+#btnWodAddSerie img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14.0001L4 18.0001M4 18.0001L8 22.0001M4 18.0001H17C18.6569 18.0001 20 16.6569 20 15.0001V12M16 9.99951L20 5.99951M20 5.99951L16 1.99951M20 5.99951H7C5.34315 5.99951 4 7.34266 4 8.99951V12" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    padding-bottom: 0px;
+    padding-top: 2px;
+}
+
+#btnRunWod img {
+     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 19.1684V4.83171C5 4.04055 5.87525 3.56271 6.54076 3.99054L17.6915 11.1589C18.3038 11.5525 18.3038 12.4476 17.6915 12.8412L6.54076 20.0096C5.87525 20.4374 5 19.9595 5 19.1684Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+     width: 20px;
+}
+
+.btnHeaderWodRunning img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H6L9 21L16 3L18 12H21" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    margin-left: -5px;
+    background-size: 20px;
+    height: 24px;
+    width: 24px;
+}
+.btnHeaderWodTerminated img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17C15.3137 17 18 14.3137 18 11V2H6V11C6 14.3137 8.68629 17 12 17ZM12 17V22M7 22H17M18 4H21V7C21 8.65685 19.6569 10 18 10M6 4H3V7C3 8.65685 4.34315 10 6 10" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    margin-left: -5px;
+    background-size: 25px;
+    height: 24px;
+    width: 24px;
+}
+
+#tblWodTitleDate #btnEditWodName[class='imgButtonSmall edit'] img {
+    content: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.9999H21M16.5201 4.52024L3.9933 17.0267L3 20.9999L6.97322 20.0066L19.5 7.50015C20.3229 6.67727 20.3229 5.34312 19.5 4.52024C18.6771 3.69736 17.343 3.69736 16.5201 4.52024Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#tblWodTitleDate #btnEditWodName[class='imgButtonSmall save'] img {
+    content: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 3V8H15V3M7 21V15H17V21M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H15.1716C15.702 3 16.2107 3.21071 16.5858 3.58579L20.4142 7.41421C20.7893 7.78929 21 8.29799 21 8.82843V19C21 20.1046 20.1046 21 19 21Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
 
 /*
 * Exercices Page
@@ -67,52 +213,7 @@
 .tdButtonClearSearch {
     text-align:right;
 }
-button {
-    border-width: thin;
-    border-color: lightgray;
-}
-.imgButtonSmall {
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: center;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-style: none;
-}
-.imgButtonBig {
-    background-repeat: no-repeat;
-    background-size: 30px;
-    font-size: x-small;
-    padding-top: 40px;
-    background-position-y: 8px;
-    background-position-x: center;
-    border-radius: 8px;
-}
-#btnClearSearch {
-    background-image: url("../res/sync.png");
-}
-#btnHome {
-    background-image: url("../res/home.png");
-}
-#btnToggleEx.User {
-    background-image: url("../res/male.png");
-}
-#btnToggleEx.All {
-    background-image: url("../res/sync.png");
-}
-#btnCreateEx {
-    background-image: url("../res/create.png");
-}
-#btnExercices {
-    background-image: url("../res/table.png");
-}
-#btnWod {
-    background-image: url("../res/stopwatch.png");
-}
-#btnStats {
-    background-image: url("../res/3d_bar_chart.png");
-}
+
 .tblResults .ulResults {
     width: 100%;
 }
@@ -153,20 +254,16 @@ button {
 .tdResultEmpty {
     width: 0px;
 }
-#btnShowDetails {
-    background-image: url("../res/view.png");
-}
+
 .imgIsCustom_true, .imgIsCustom_false  {
-    background-position: center;
-    background-size: 14px;
-    width: 14px;
-    height: 14px;
-    background-repeat: no-repeat;
     border-style: hidden;
     background-color: white;
+    top: 4px;
+    position: relative;
+    left: -4px;
 }
-.imgIsCustom_true {
-    background-image: url("../res/male.png");    
+.imgIsCustom_true img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 21H20C20 21 18.5 15 12 15C5.5 15 4 21 4 21Z" stroke="lightgreen" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="lightgreen" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 /*
@@ -203,9 +300,7 @@ button {
     width: 100%;
     height: 5%;
 }
-#btnDeleteExerc {
-    background-image: url("../res/delete.png");
-}
+
 #divEditExercBtn {
     width: 100%;
     text-align: right;
@@ -214,15 +309,6 @@ button {
 /*
 * WOD Page
 */
-.btnStartWod {
-    background-image: url("../res/go.png");
-}
-#btnRecentWod {
-    background-image: url("../res/calendar.png");
-}
-#btnWodItemsClear {
-     background-image: url("../res/sync.png");
-}
 
 #divWodItemsResults {
     height: 85%;
@@ -242,32 +328,11 @@ button {
     width: 50px;
 }
 
-#tblWodTitleDate #btnEditWodName[class='imgButtonSmall edit'] {
-    background-image: url("../res/modify.png");
-}
-#tblWodTitleDate #btnEditWodName[class='imgButtonSmall save'] {
-    background-image: url("../res/save1.png");
-}
 #txtWodName {
     width: 200px;
 }
 #tblExoListWod .tdResultMain {
     width: 80%;
-}
-.tblExoListWod #btnDeleteExerc {
-    background-image: url("../res/delete.png");
-}
-#btnWodAddExo {
-    background-image: url("../res/create.png");
-    width:60px;
-}
-#btnWodAddRest {
-    background-image: url("../res/stop_sign.png");
-    width:60px;
-}
-#btnWodAddSerie {
-    background-image: url("../res/redo.png");
-    width:60px;
 }
 
 .trWodRow[data-type='REST'] {
@@ -279,14 +344,24 @@ button {
 .trWodRow[data-type='SERIE'] {
     color: #525252;
 }
-.trWodRow[data-type='REST'] .btnWodItemIcon {
-    background-image: url("../res/stop_sign.png");
+.trWodRow[data-type='REST'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H21.1667L17 7H21.1667M12 6V12L16 16M13 2.04938C12.6711 2.01672 12.3375 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6625 21.9833 11.3289 21.9506 11" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-.trWodRow[data-type='EXO'] .btnWodItemIcon {
-    background-image: url("../res/stopwatch.png");
+.trWodRow[data-type='EXO'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 11.5H15L13 14L11 9L9.5 11.5H8M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-.trWodRow[data-type='SERIE'] .btnWodItemIcon {
-    background-image: url("../res/redo.png");
+.trWodRow[data-type='SERIE'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14.0001L4 18.0001M4 18.0001L8 22.0001M4 18.0001H17C18.6569 18.0001 20 16.6569 20 15.0001V12M16 9.99951L20 5.99951M20 5.99951L16 1.99951M20 5.99951H7C5.34315 5.99951 4 7.34266 4 8.99951V12" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.trWodItemRow[data-type='REST'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H21.1667L17 7H21.1667M12 6V12L16 16M13 2.04938C12.6711 2.01672 12.3375 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6625 21.9833 11.3289 21.9506 11" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.trWodItemRow[data-type='EXO'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 11.5H15L13 14L11 9L9.5 11.5H8M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.89982 14.6651 9.84977 19.1041 11.4721 20.5408C11.6536 20.7016 11.7444 20.7819 11.8502 20.8135C11.9426 20.8411 12.0437 20.8411 12.1361 20.8135C12.2419 20.7819 12.3327 20.7016 12.5142 20.5408C14.1365 19.1041 19.0865 14.6651 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.trWodItemRow[data-type='SERIE'] .btnWodItemIcon img {
+    content: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 14.0001L4 18.0001M4 18.0001L8 22.0001M4 18.0001H17C18.6569 18.0001 20 16.6569 20 15.0001V12M16 9.99951L20 5.99951M20 5.99951L16 1.99951M20 5.99951H7C5.34315 5.99951 4 7.34266 4 8.99951V12" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 .trWodRow input[class='readonly'] {border-style: none;}
@@ -316,34 +391,11 @@ button {
 .trWodItemRow[data-type='SERIE'] {
     color: #525252;
 }
-.trWodItemRow[data-type='REST'] .btnWodItemIcon {
-    background-image: url("../res/stop_sign.png");
-}
-.trWodItemRow[data-type='EXO'] .btnWodItemIcon {
-    background-image: url("../res/stopwatch.png");
-}
-.trWodItemRow[data-type='SERIE'] .btnWodItemIcon {
-    background-image: url("../res/redo.png");
-}
 
 .tblListWodItems .trWodItemRow {
     font-size: 16px;
     font-variant: petite-caps;
     height: 40px;
-}
-.btnHeaderWodRunning {
-    background-image: url("../res/next.png");
-    margin-left: -5px;
-    background-size: 20px;
-    height: 20px;
-    width: 20px;
-}
-.btnHeaderWodTerminated {
-    background-image: url("../res/thumbs_up.png");
-    margin-left: -5px;
-    background-size: 25px;
-    height: 25px;
-    width: 25px;
 }
 
 #tdHeaderRunningWod {
@@ -387,10 +439,6 @@ td.tdNomWodItem {
 * Recent Wod
 */
 
-#btnRunWod {
-     background-image: url("../res/go.png");
-}
-
 .divRecentWodList {
     width: 100%;
     height: 100%;
@@ -412,7 +460,7 @@ td.tdNomWodItem {
     margin-top: 20px;
 }
 
-.tdRecentWodBtnAction {width: 25px;}
+.tdRecentWodBtnAction {width: 20px;}
 
 .tdNomWod {
     font-size: 16px;
@@ -436,9 +484,7 @@ td.tdNomWodItem {
 .tblLogin .tdButtonLogin {
     text-align: right;
 }
-#btnValidateLogin {
-    background-image: url("../res/apply.png");
-}
+
 
 /*
 * Popin
@@ -466,42 +512,12 @@ td.tdNomWodItem {
 .trPopinFooter {
     height: 70px;
     text-align: center;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
 }
 .trPopinHeader {
     height: 30px;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     width: 100%;
-}
-#btnPopinFermer {
-    background-image: url("../res/close.png");
-    height: 60px;
-    width: 100px;
-}
-#btnPopinOk {
-    background-image: url("../res/apply.png");
-    height: 60px;
-    width: 100px;
-}
-#btnPopinCancel {
-    background-image: url("../res/close.png");
-    height: 60px;
-    width: 100px;
-}
-.btnCancelButton {
-    background-image: url("../res/close.png");
-    height: 60px;
-    width: 100px;
-}
-.btnCloseButton {
-    background-image: url("../res/apply.png");
-    height: 60px;
-    width: 100px;
-}
-.btnNewWod {
-    background-image: url("../res/redo.png");
-    height: 60px;
-    width: 100px;
 }
 
 .tblPopinYesNo {
@@ -527,16 +543,6 @@ td.tdNomWodItem {
 #tdPopinYesNoContent {
     vertical-align: baseline;
     text-align: center;
-}
-#btnPopinYes {
-    background-image: url("../res/yes.png");
-    height: 60px;
-    width: 100px;
-}
-#btnPopinNo {
-    background-image: url("../res/close.png");
-    height: 60px;
-    width: 100px;
 }
 #tdPopinYesNoButtons {
     text-align: center;
