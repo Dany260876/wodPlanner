@@ -1,13 +1,35 @@
-[
-  "js/template/template.js",
-  "js/classes/categorie.js",
-  "js/classes/difficulte.js",
-  "js/classes/exercice.js",
-  "js/classes/zone.js",
-  "js/classes/wod.js",
-  "js/managers/statisticsManager.js",
-  "js/managers/dataManager.js",
-  "js/managers/filterManager.js",
-  "js/managers/pageManager.js",
-  "js/managers/popinManager.js"
-]
+{
+    "scripts": [
+        "js/template/template.js",
+        "js/classes/categorie.js",
+        "js/classes/difficulte.js",
+        "js/classes/exercice.js",
+        "js/classes/zone.js",
+        "js/classes/wod.js",
+        "js/managers/statisticsManager.js",
+        "js/managers/dataManager.js",
+        "js/managers/filterManager.js",
+        "js/managers/pageManager.js",
+        "js/managers/popinManager.js"
+    ],
+    "pages": [
+        {
+            "name": "home",
+            "page": "homePage",
+            "header": "headerHomePage",
+            "footer": "footerMenu"
+        },
+        {
+            "name": "wod",
+            "page": "wodPage",
+            "header": "headerWodPage",
+            "footer": "footerMenuWod"
+        },
+        {
+            "name": "exo",
+            "page": "exoPage",
+            "header": "headerExoPage",
+            "footer": "footerMenuExercices"
+        }
+    ]
+}

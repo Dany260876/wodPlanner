@@ -2,12 +2,19 @@
 * Main program
 */
 var program = {
-	loadScripts:() => {
+	configuration: {},
+	loadConfiguration:() => {
 		var result = $.Deferred();
-		$.getJSON("./config.json", function(data) {
-			data.forEach((d) => { 
+		$.getJSON("./config.json", function(data) {		
+			// insert scripts
+			program.configuration.scripts = data.scripts;
+			data.scripts.forEach((d) => { 
 				$('head').append("<script type='text/javascript' src='" + d + "'></script>");
 			});
+			
+			// get pages configuration
+			program.configuration.pages = data.pages;
+			
 			result.resolve();
 		})
 		.fail(function() {
@@ -47,7 +54,7 @@ var program = {
 	},
 	start: () => {
 		// Add scripts
-		program.loadScripts().done(() => {
+		program.loadConfiguration().done(() => {
 			// resize components
 			program.resizeView();
 			$(window).on("resize", function() {
@@ -60,9 +67,7 @@ var program = {
 			var get3 = dataManager.getDataFromJson('diff');
 			var get4 = dataManager.getDataFromJson('exerc');
 			$.when(get1, get2, get3, get4).done(() => {
-				popinManager.hide();
-				pageManager.renderPage("homePage");
-				pageManager.renderFooter("footerMenu");
+				pageManager.navigateTo('home');
 			});
 		});
 	}
