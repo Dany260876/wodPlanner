@@ -7,12 +7,10 @@
 </table>
 <script>
     $('#btnExercices').click(() => {    
-        pageManager.renderFooter("footerMenuExercices");
-        pageManager.renderPage("exoPage");
+        pageManager.navigateTo('exo');
     });
     $('#btnWod').click(() => {
-        pageManager.renderFooter("footerMenuWod");
-        pageManager.renderPage("wodPage");
+        pageManager.navigateTo('wod');
     });
     $('#btnStats').click(() => {
         console.log('btnStats');

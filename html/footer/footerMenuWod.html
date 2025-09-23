@@ -7,8 +7,7 @@
 </table>
 <script>
     $('#btnHome').click(function() {
-        pageManager.renderPage("homePage");
-        pageManager.renderFooter("footerMenu");
+        pageManager.navigateTo('home');
     });
     $('.btnStartWod').click(function() {
         wodRunner.startWod();
@@ -16,7 +15,9 @@
     $('#btnRecentWod').click(function() {
         // get recents and display content
         dataManager.getDataFromStorage('wodRecent').done((data) => {
-            pageManager.renderElement('wod/listRecentWod',data,'divContent');  
+            let element = 'wod/listRecentWod';
+            if (!data) element = 'wod/wodNoRecent';
+            pageManager.renderElement(element,data,'divContent');  
         });
     });
 </script>

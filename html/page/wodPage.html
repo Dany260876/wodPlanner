@@ -5,13 +5,16 @@
             <td><button class='imgButtonSmall edit' id='btnEditWodName'/><img/></td>
         </tr>
     </table>
-    <table id='tblWodActions'>
-        <tr>
-            <td><button class='imgButtonBig' id='btnWodAddExo'><img/><br/>Exercices</button></td>
-            <td><button class='imgButtonBig' id='btnWodAddRest'><img/><br/>Repos</button></td>
-            <td><button class='imgButtonBig' id='btnWodAddSerie'><img/><br/>Série</button></td>
-        </tr>
-    </table>
+    <hr/>
+    <div class='divWodActions'>
+        <table id='tblWodActions'>
+            <tr>
+                <td><button class='imgButtonBig' id='btnWodAddExo'><img/><br/>Exercices</button></td>
+                <td><button class='imgButtonBig' id='btnWodAddRest'><img/><br/>Repos</button></td>
+                <td><button class='imgButtonBig' id='btnWodAddSerie'><img/><br/>Série</button></td>
+            </tr>
+        </table>
+    </div>
     <hr/>
     <table id='tblWodItems'></table>   
 </div>
@@ -195,7 +198,12 @@
         editWodName:() => {
             if ($("#btnEditWodName").hasClass('edit')) {
                 let object = new injectableObject();
-                object.value = $("#tdWodName").html();
+                let val = $("#tdWodName").html();
+                if (val.indexOf('Wod du')>-1)
+                    object.value = '';
+                else
+                    object.value = val;
+                
                 pageManager.renderElement('wod/editWodName', [object], 'tdWodName').done(()=>{
                     $("#btnEditWodName").toggleClass(['edit','save']);
                 });
@@ -408,8 +416,7 @@
             
             // set btn new wod action
             $('.btnNewWod').click(function() {
-                pageManager.renderFooter("footerMenuWod");
-                pageManager.renderPage("wodPage");
+                pageManager.navigateTo('wod');
             });
         }
     };

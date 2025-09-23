@@ -34,5 +34,37 @@ var pageManager = {
 			result.reject(null);
 		});
 		return result.promise();
+	},
+	renderHeader: (headerName) => {
+		var result = $.Deferred();
+		templateHelper.buildTemplate('header/' + headerName).done(function(res) {
+			$('#divHeader').html(res);
+			result.resolve(res);
+		})
+		.fail(function() {
+			result.reject(null);
+		});
+		return result.promise();
+	},
+	navigateTo: (pageName) => {
+		var result = $.Deferred();
+		let pageConfig = program.configuration.pages.find((obj) => obj.name==pageName);
+		popinManager.hide();		
+		pageManager.renderHeader(pageConfig.header).done(() => {
+			pageManager.renderFooter(pageConfig.footer).done(() => {
+				pageManager.renderPage(pageConfig.page).done(() => {
+					result.resolve();
+				}).fail(function() {
+					result.reject(null);
+				});
+			})
+			.fail(function() {
+					result.reject(null);
+			});
+		})
+		.fail(function() {
+			result.reject(null);
+		});
+		return result.promise();
 	}
 };
