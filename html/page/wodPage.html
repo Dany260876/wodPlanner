@@ -102,6 +102,12 @@
         // Render wod items list on wod page
         renderWodItems:() => {
             let result = $.Deferred();
+            
+            // Disable/enable Start button
+            if ((wodPage.wodItems.length>0) && $('.btnStartWod.disabled').length>0) $('.btnStartWod').toggleClass('disabled');
+            if ((wodPage.wodItems.length==0) && $('.btnStartWod.disabled').length==0) $('.btnStartWod').toggleClass('disabled');
+            
+            // render items
             pageManager.renderElement('wod/listExoWod', wodPage.wodItems, 'tblWodItems').done(()=>{
                 $("#tblWodItems #btnDeleteExerc").on("click", (obj) => {
                     let parent = $(obj.currentTarget).parents('.trWodRow');
@@ -255,6 +261,10 @@
         
         // Start the wod
         startWod:() => {
+
+            // Check button state
+            if ($('.btnStartWod.disabled').length>0) return;
+            
             // Check currentWod
             if (wodRunner.currentWod.id) return;
             
@@ -407,8 +417,8 @@
             // Switch buttons
             $("#btnPopinAnnulerWod").toggleClass(["btnCancelButton", "btnCloseButton"]);
             $("#btnPopinAnnulerWod").html("<img/><br/>Fermer");
-            $(".btnStartWod").html("<img/><br/>Nouveau");
-            $(".btnStartWod").toggleClass(["btnStartWod", "btnNewWod"]);
+            $("#btnStartWod").html("<img/><br/>Nouveau");
+            $("#btnStartWod").toggleClass(["btnStartWod", "btnNewWod"]);
             
             // display text
             let txtButton = "<button class='imgButtonSmall btnHeaderWodTerminated'><img/></button>";
