@@ -87,6 +87,9 @@ button {
 .imgButtonBig img {
     padding-bottom: 5px;
 }
+.imgButtonBig.disabled {
+    color: lightgray;
+}
 
 #btnClearSearch img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
@@ -113,7 +116,6 @@ button {
 #btnStats img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3V21H21M7 16L12.25 10.75L15.75 14.25L21 9" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-
 #btnPopinFermer img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17V18C12 19.6569 10.6569 21 9 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3H9C10.6569 3 12 4.34315 12 6V7M17 8L21 12L17 16M9 12H19" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
@@ -135,12 +137,14 @@ button {
 .btnCloseButton img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9506 11C21.9833 11.3289 22 11.6625 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C13.4222 2 14.7751 2.2969 16 2.83209M9 11L12 14L22 4" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-
 .btnNewWod img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.3861 17.7447C20.0429 18.2556 21 17.7875 21 16.9554V7.04464C21 6.21249 20.0429 5.7444 19.3861 6.25529L13.0149 11.2106C12.5001 11.611 12.5001 12.389 13.0149 12.7894L19.3861 17.7447Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.3861 17.7447C11.0429 18.2556 12 17.7875 12 16.9554V7.04464C12 6.21249 11.0429 5.7444 10.3861 6.25529L4.01488 11.2106C3.50014 11.611 3.50013 12.389 4.01488 12.7894L10.3861 17.7447Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 .btnStartWod img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.61394 17.7449C3.95708 18.2558 3 17.7877 3 16.9555V7.04482C3 6.21267 3.95708 5.74458 4.61394 6.25547L10.9851 11.2108C11.4999 11.6112 11.4999 12.3892 10.9851 12.7895L4.61394 17.7449Z" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6139 17.7449C12.9571 18.2558 12 17.7877 12 16.9555V7.04482C12 6.21267 12.9571 5.74458 13.6139 6.25547L19.9851 11.2108C20.4999 11.6112 20.4999 12.3892 19.9851 12.7895L13.6139 17.7449Z" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.btnStartWod.disabled img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.61394 17.7449C3.95708 18.2558 3 17.7877 3 16.9555V7.04482C3 6.21267 3.95708 5.74458 4.61394 6.25547L10.9851 11.2108C11.4999 11.6112 11.4999 12.3892 10.9851 12.7895L4.61394 17.7449Z" stroke="lightgrey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6139 17.7449C12.9571 18.2558 12 17.7877 12 16.9555V7.04482C12 6.21267 12.9571 5.74458 13.6139 6.25547L19.9851 11.2108C20.4999 11.6112 20.4999 12.3892 19.9851 12.7895L13.6139 17.7449Z" stroke="lightgrey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 #btnRecentWod img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10H21M16 2V6M8 2V6M7 14H15M7 18H10M5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22Z" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
@@ -149,21 +153,17 @@ button {
      content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
      width: 20px;
 }
-
 #btnDeleteExerc img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     width: 20px;
 }
-
 #btnShowDetails img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14L22 22M16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     width: 20px;
 }
-
 #btnValidateLogin img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L9 18L21 6" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-
 #btnWodAddExo, #btnWodAddRest, #btnWodAddSerie {
     width: 75px;
 }
@@ -202,7 +202,6 @@ button {
     height: 24px;
     width: 24px;
 }
-
 #tblWodTitleDate #btnEditWodName[class='imgButtonSmall edit'] img {
     content: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.9999H21M16.5201 4.52024L3.9933 17.0267L3 20.9999L6.97322 20.0066L19.5 7.50015C20.3229 6.67727 20.3229 5.34312 19.5 4.52024C18.6771 3.69736 17.343 3.69736 16.5201 4.52024Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
