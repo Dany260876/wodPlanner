@@ -2,7 +2,7 @@
     <tr>
         <td><button class='imgButtonBig' id='btnHome'><img/><br/>Accueil</button></td>
         <td><button class='imgButtonBig btnStartWod disabled' id='btnStartWod'><img/><br/>Démarrer</button></td>
-        <td><button class='imgButtonBig' id='btnRecentWod'><img/><br/>Récents</button></td>
+        <td><button class='imgButtonBig btnRecentWod' id='btnRecentWod'><img/><br/><div id='divTextBtnRecent'>Récents</div></button></td>
     </tr>
 </table>
 <script>
@@ -12,12 +12,19 @@
     $('#btnStartWod').click(function() {
         wodRunner.startWod();
     });
-    $('#btnRecentWod').click(function() {
-        // get recents and display content
-        dataManager.getDataFromStorage('wodRecent').done((data) => {
-            let element = 'wod/listRecentWod';
-            if (!data) element = 'wod/wodNoRecent';
-            pageManager.renderElement(element,data,'divContent');  
-        });
+    $('#btnRecentWod').click(function() { 
+        if ($('.btnRecentWod').length==1) {
+            // get recents and display content
+            dataManager.getDataFromStorage('wodRecent').done((data) => {
+                let element = 'wod/listRecentWod';
+                if (!data) element = 'wod/wodNoRecent';
+                pageManager.renderElement(element,data,'divContent');  
+            });
+            $('#divTextBtnRecent').text('Retour');
+        }
+        if ($('.btnRecentWodBack').length==1) {
+            pageManager.navigateTo('wod');
+        }
+        $('#btnRecentWod').toggleClass(['btnRecentWod','btnRecentWodBack']);
     });
 </script>
