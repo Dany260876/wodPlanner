@@ -17,10 +17,40 @@ hr {
 /*
 * Header
 */
-.divHeader {
-    margin-left: 10px;
+div#divHeader {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #e4e4e4;
 }
-
+.divHeader {
+    margin-left: 2px;
+    margin-top: 2px;
+}
+.tblHeader {
+    width: 100%;
+    height: 30px;
+}
+td.tdHeaderLeft {
+    width: 30px;
+}
+td.tdHeaderMiddle {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    font-variant: petite-caps;
+    font-size: 18px;
+}
+td.tdHeaderRight {
+    width: 30px;
+}
+.imgHeaderHome {
+    content: url('data:image/svg+xml,<svg fill="darkcyan" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve"><g><path d="M150,7.5C71.421,7.5,7.5,71.434,7.5,150S71.421,292.5,150,292.5S292.5,228.566,292.5,150S228.579,7.5,150,7.5z M150,278.924c-71.092,0-128.924-57.841-128.924-128.924S78.908,21.076,150,21.076S278.924,78.917,278.924,150S221.092,278.924,150,278.924z"/><rect x="110.992" y="136.424" width="78.017" height="27.152"/><path d="M58.402,128.786v2.758c-1.021-0.624-2.14-1.051-3.405-1.051c-3.748,0-6.779,3.036-6.779,6.778v25.457c0,3.742,3.031,6.778,6.779,6.778c1.265,0,2.384-0.427,3.405-1.051v2.758c0,6.915,5.186,12.556,11.872,13.396V115.39C63.588,116.23,58.402,121.871,58.402,128.786z"/><path d="M245.003,130.493c-1.265,0-2.384,0.427-3.404,1.051v-2.758c0-6.915-5.187-12.556-11.872-13.396v69.221c6.686-0.841,11.872-6.481,11.872-13.396v-2.758c1.021,0.624,2.14,1.051,3.404,1.051c3.748,0,6.779-3.036,6.779-6.778v-25.457C251.782,133.529,248.751,130.493,245.003,130.493z"/><path d="M90.628,94.033c-7.487,0-13.566,6.079-13.566,13.575v84.783c0,7.496,6.08,13.575,13.566,13.575c7.496,0,13.576-6.079,13.576-13.575v-84.783C104.204,100.112,98.124,94.033,90.628,94.033z"/><path d="M209.372,94.033c-7.496,0-13.576,6.079-13.576,13.575v84.783c0,7.496,6.08,13.575,13.576,13.575c7.487,0,13.566-6.079,13.566-13.575v-84.783C222.938,100.112,216.859,94.033,209.372,94.033z"/></g></svg>');
+}
+.imgHeaderHomeConfig {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.0761 3.16311C10.136 2.50438 10.6883 2 11.3497 2H12.6503C13.3117 2 13.864 2.50438 13.9239 3.16311C13.9731 3.70392 14.3623 4.14543 14.8708 4.336C15.0015 4.38499 15.1307 4.43724 15.2582 4.49263C15.7613 4.71129 16.3531 4.66938 16.7745 4.31818C17.2953 3.8842 18.0611 3.91894 18.5404 4.39829L19.4584 5.31623C19.9154 5.77326 19.9485 6.50338 19.5347 6.99992C19.1901 7.41349 19.158 7.99745 19.3897 8.48341C19.49 8.69386 19.5816 8.90926 19.664 9.12916C19.8546 9.63767 20.2961 10.0269 20.8369 10.0761C21.4956 10.136 22 10.6883 22 11.3497V12.6503C22 13.3117 21.4956 13.864 20.8369 13.9239C20.2961 13.9731 19.8546 14.3623 19.664 14.8708C19.59 15.0682 19.5086 15.262 19.4202 15.4518C19.2053 15.913 19.2401 16.4637 19.5658 16.8546C19.962 17.33 19.9303 18.0291 19.4927 18.4667L18.4667 19.4927C18.0291 19.9303 17.33 19.962 16.8546 19.5658C16.4637 19.2401 15.913 19.2053 15.4518 19.4202C15.262 19.5086 15.0682 19.59 14.8708 19.664C14.3623 19.8546 13.9731 20.2961 13.9239 20.8369C13.864 21.4956 13.3117 22 12.6503 22H11.3497C10.6883 22 10.136 21.4956 10.0761 20.8369C10.0269 20.2961 9.63767 19.8546 9.12917 19.664C8.90927 19.5816 8.69387 19.49 8.48343 19.3897C7.99746 19.158 7.4135 19.1901 6.99992 19.5347C6.50338 19.9485 5.77325 19.9154 5.31622 19.4584L4.39829 18.5404C3.91893 18.0611 3.8842 17.2953 4.31818 16.7745C4.66939 16.3531 4.71129 15.7613 4.49263 15.2582C4.43724 15.1307 4.385 15.0016 4.336 14.8708C4.14544 14.3623 3.70392 13.9731 3.16311 13.9239C2.50438 13.864 2 13.3117 2 12.6503V11.3497C2 10.6883 2.50438 10.136 3.16311 10.0761C3.70393 10.0269 4.14544 9.63768 4.33601 9.12917C4.3936 8.9755 4.45568 8.82402 4.52209 8.67489C4.7571 8.14716 4.71804 7.52257 4.34821 7.07877C3.89722 6.53758 3.93332 5.74179 4.43145 5.24365L5.24364 4.43146C5.74178 3.93332 6.53757 3.89722 7.07876 4.34822C7.52256 4.71805 8.14715 4.7571 8.67488 4.52209C8.82401 4.45568 8.97549 4.3936 9.12916 4.33601C9.63767 4.14544 10.0269 3.70393 10.0761 3.16311Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    position: relative;
+    left: -2px;
+}
 /* 
 * Main page 
 */
@@ -108,10 +138,10 @@ button {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V16M16 12H8M6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3Z" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 #btnExercices img {
-    content: url('data:image/svg+xml,<svg width="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 6H21.5M9.5 12H21.5M9.5 18H21.5M2 6L3.30628 7.30628C3.41599 7.41599 3.59127 7.42394 3.71047 7.32461L6.5 5M2 12L3.30628 13.3063C3.41599 13.416 3.59127 13.4239 3.71047 13.3246L6.5 11M2 18L3.30628 19.3063C3.41599 19.416 3.59127 19.4239 3.71047 19.3246L6.5 17" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    content: url('data:image/svg+xml,<svg version="1.1" width="24px" height="24px" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve"><style type="text/css">.st0{fill:none;stroke:grey;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}</style><path class="st0" d="M7,24L7,24c-1.1,0-2-0.9-2-2V10c0-1.1,0.9-2,2-2h0c1.1,0,2,0.9,2,2v12C9,23.1,8.1,24,7,24z"/><path class="st0" d="M3,21L3,21c-1.1,0-2-0.9-2-2v-6c0-1.1,0.9-2,2-2h0c1.1,0,2,0.9,2,2v6C5,20.1,4.1,21,3,21z"/><path class="st0" d="M25,8L25,8c1.1,0,2,0.9,2,2v12c0,1.1-0.9,2-2,2h0c-1.1,0-2-0.9-2-2V10C23,8.9,23.9,8,25,8z"/><path class="st0" d="M29,11L29,11c1.1,0,2,0.9,2,2v6c0,1.1-0.9,2-2,2h0c-1.1,0-2-0.9-2-2v-6C27,11.9,27.9,11,29,11z"/><line class="st0" x1="9" y1="16" x2="23" y2="16"/></svg>');
 }
 #btnWod img {
-    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 7V12L15 15M17 18L19 20L23 16M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C13.0452 22 14.053 21.8396 15 21.5422" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    content: url('data:image/svg+xml,<svg width="24px" height="24px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:darkcyan;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><rect class="cls-1" x="1.48" y="3.37" width="21.04" height="4.78"/><rect class="cls-1" x="1.48" y="8.15" width="21.04" height="14.35"/><line class="cls-1" x1="3.39" y1="14.85" x2="5.3" y2="14.85"/><line class="cls-1" x1="5.3" y1="11.98" x2="5.3" y2="17.72"/><line class="cls-1" x1="18.7" y1="11.98" x2="18.7" y2="17.72"/><line class="cls-1" x1="15.83" y1="11.02" x2="15.83" y2="18.67"/><line class="cls-1" x1="8.17" y1="11.02" x2="8.17" y2="18.67"/><line class="cls-1" x1="8.17" y1="14.85" x2="15.83" y2="14.85"/><line class="cls-1" x1="18.7" y1="14.85" x2="20.61" y2="14.85"/><line class="cls-1" x1="12" y1="0.5" x2="12" y2="5.28"/><line class="cls-1" x1="6.26" y1="0.5" x2="6.26" y2="5.28"/><line class="cls-1" x1="17.74" y1="0.5" x2="17.74" y2="5.28"/></svg>');
 }
 #btnStats img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3V21H21M7 16L12.25 10.75L15.75 14.25L21 9" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
@@ -146,8 +176,11 @@ button {
 .btnStartWod.disabled img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.61394 17.7449C3.95708 18.2558 3 17.7877 3 16.9555V7.04482C3 6.21267 3.95708 5.74458 4.61394 6.25547L10.9851 11.2108C11.4999 11.6112 11.4999 12.3892 10.9851 12.7895L4.61394 17.7449Z" stroke="lightgrey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.6139 17.7449C12.9571 18.2558 12 17.7877 12 16.9555V7.04482C12 6.21267 12.9571 5.74458 13.6139 6.25547L19.9851 11.2108C20.4999 11.6112 20.4999 12.3892 19.9851 12.7895L13.6139 17.7449Z" stroke="lightgrey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
-#btnRecentWod img {
+.btnRecentWod img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10H21M16 2V6M8 2V6M7 14H15M7 18H10M5 22H19C20.1046 22 21 21.1046 21 20V6C21 4.89543 20.1046 4 19 4H5C3.89543 4 3 4.89543 3 6V20C3 21.1046 3.89543 22 5 22Z" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+.btnRecentWodBack img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 11L4 15M4 15L8 19M4 15H17C18.6569 15 20 13.6569 20 12V5" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 #btnWodItemsClear img {
      content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3H15M3 6H21M10 16V11M14 16V11M5 6H19L18.1245 19.133C18.0544 20.1836 17.1818 21 16.1289 21L7.8461 21C6.79171 21 5.91842 20.1814 5.85028 19.1292L5 6Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
@@ -162,7 +195,7 @@ button {
     width: 20px;
 }
 #btnValidateLogin img {
-    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L9 18L21 6" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9506 11C21.9833 11.3289 22 11.6625 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C13.4222 2 14.7751 2.2969 16 2.83209M9 11L12 14L22 4" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 #btnWodAddExo, #btnWodAddRest, #btnWodAddSerie {
     width: 75px;
