@@ -5,7 +5,6 @@
             <td><button class='imgButtonSmall edit' id='btnEditWodName'/><img/></td>
         </tr>
     </table>
-    <hr/>
     <div class='divWodActions'>
         <table id='tblWodActions'>
             <tr>
@@ -205,7 +204,7 @@
             if ($("#btnEditWodName").hasClass('edit')) {
                 let object = new injectableObject();
                 let val = $("#tdWodName").html();
-                if (val.indexOf('Wod du')>-1)
+                if (val.indexOf('Wod_')>-1)
                     object.value = '';
                 else
                     object.value = val;
@@ -434,7 +433,7 @@
     wodPage.initialise().done(() => {
         // update current wod name
         let date = new Date();
-        $("#tdWodName").html("Wod du " + date.toLocaleDateString() + ' à ' + date.toLocaleTimeString());
+        $("#tdWodName").html("Wod_" + date.getTime());
 
         // buttons clic
         $("#btnWodAddExo").click(()=>wodPage.addWodItem());

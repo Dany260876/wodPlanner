@@ -43,7 +43,14 @@ class Wod extends injectableObject {
 			let resteSec = dureeSec - (dureeMin*60);
 			let dureeH = Math.floor(dureeMin/60);
 			let resteMin = dureeMin - (dureeH*60);
-			return dureeH + ":" + resteMin + ":" + resteSec + "." + resteMs;
+
+			let resultat = "";
+			if (dureeH>0) resultat = resultat + dureeH + "h";
+			if (resteMin>0) resultat = resultat + resteMin + "min";
+			if (resteSec>0) resultat = resultat + resteSec + "s";
+			if (resultat=="") resultat = resultat + resteMs + "ms";
+			
+			return resultat;
 		}
 		return -1;		
 	}

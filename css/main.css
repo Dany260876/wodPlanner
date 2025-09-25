@@ -447,13 +447,11 @@ button {
 .trWodItemRow[data-type='SERIE'] {
     color: #525252;
 }
-
 .tblListWodItems .trWodItemRow {
     font-size: 16px;
     font-variant: petite-caps;
     height: 40px;
 }
-
 #tdHeaderRunningWod {
     font-size: 20px;
     font-variant-caps: all-small-caps;
@@ -461,32 +459,27 @@ button {
     color: #525252;
     font-weight: bold;
 }
-
 td.tdUnitWodItem {
     width: 25px;
 }
-
 input#chkDone {
     width: 25px;
     height: 25px;
 }
-
 td.tdQteWodItem {
     width: 20px;
 }
-
 td.tdNomWodItem {
     width: max-content;
     font-size: 16px;
     font-variant: petite-caps;
 }
-
 .divWodContent {
     height: 100%;
     overflow-y: scroll;
     width: 100%;
+    margin-top: 5px;
 }
-
 .divListWodItems {
     height: 480px;
     overflow-y: scroll;
@@ -501,27 +494,37 @@ td.tdNomWodItem {
     height: 100%;
     overflow-y: scroll;
 }
-.tdRecentWodName {
+.divRecentWodName {
+    font-size: 16px;
+    font-variant: petite-caps;
+}
+.divRecentWodDate {
+    font-size: small;
 }
 .trRecentWodRow {
-    height: 35px;
+    height: 40px;
+    vertical-align: middle;
 }
 .tblRecentListWod {
     width: 100%;
 }
-
 #divWodDetailStats {
     height: 200px;
     max-width: 400px;
     margin: 0px auto;
     margin-top: 20px;
 }
-
-.tdRecentWodBtnAction {width: 20px;}
-
+.tdRecentWodBtnAction {
+    width: 20px;
+}
 .tdNomWod {
     font-size: 16px;
     font-weight: bold;
+    text-align: center;
+}
+td.tdDateDebWod {
+    text-align: center;
+    font-size: 12px;
 }
 
 /*
