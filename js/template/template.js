@@ -52,12 +52,42 @@ var templateHelper = {
 		var resultHtml = "";
 		var tempHtml = html;
 		for (n=0;n<objectList.length;n++) {
+			
+			// Replace values with object properties
 			var props = Object.getOwnPropertyNames(objectList[n]);
 			for (i=0; i<props.length; i++) {
 				var replaceString = "[" + objectList[n].tagName + "." + props[i] + "]";
 				var value = objectList[n][props[i]];
-				tempHtml = tempHtml.replace(replaceString, value);
+				tempHtml = tempHtml.replaceAll(replaceString, value);
 			}
+			
+			// Replace methods with object method calls values (no parameters)
+			let iPosEnd = tempHtml.indexOf('()]');
+			while (iPosEnd>0) {
+				let iPosStart = iPosEnd;
+				let found = false;
+				while(iPosStart>0 && !found) {
+					if (tempHtml[iPosStart]=='[') 
+						found = true;
+					else
+						iPosStart--;
+				}
+				if (iPosStart>0) {
+					let objectMethod = tempHtml.substr(iPosStart+1, iPosEnd-iPosStart-1);
+					let arrayMethod = objectMethod.split('.');
+					let methodName = '';
+					if (arrayMethod.length==1) methodName = arrayMethod[0];
+					if (arrayMethod.length==2) methodName = arrayMethod[1];
+					let returnValue = objectList[n][methodName]();
+					tempHtml = tempHtml.replaceAll('[' + objectMethod + '()]', returnValue);
+				}
+				else {
+					tempHtml = tempHtml.replace('()]', '');
+				}
+				iPosEnd = tempHtml.indexOf('()]');
+			}
+
+			// Concat final result
 			if (concat) {
 				resultHtml = resultHtml + tempHtml;
 				tempHtml = html;

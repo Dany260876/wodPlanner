@@ -24,7 +24,7 @@ var dataManager = {
 					d.wodItems.forEach((item) => {
 						wodItems.push(new WodItem(item.type, item.exerciceId, item.nom, item.quantite, item.unite));
 					});
-					listData.push(new Wod(d.id, d.nom, wodItems, d.dateDebut, d.dateFin));	
+					listData.push(new Wod(d.id, d.nom, wodItems, new Date(d.dateDebut), new Date(d.dateFin)));	
 				}
 			});
 			result.resolve(listData);
