@@ -13,7 +13,7 @@
     $('#btnToggleEx').click(() => {
         let type = $('#btnToggleEx').data("type");
         if (type=='user') {
-           dataManager.getDataFromStorage('customExerc').done((results) => {
+           dataManager.getCustomExercices().done((results) => {
                if (results && results.length>0)
                     exoPage.showExercices(results);
                else 

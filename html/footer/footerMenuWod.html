@@ -15,7 +15,7 @@
     $('#btnRecentWod').click(function() { 
         if ($('.btnRecentWod').length==1) {
             // get recents and display content
-            dataManager.getDataFromStorage('wodRecent').done((data) => {
+            dataManager.getRecentWods().done((data) => {
                 let element = 'wod/listRecentWod';
                 if (!data) element = 'wod/wodNoRecent';
                 pageManager.renderElement(element,data,'divContent');  

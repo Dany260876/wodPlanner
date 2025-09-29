@@ -2,15 +2,35 @@
     <table class='tblLogin'>
         <tr>
             <td>Login</td>
-            <td><input type='text'></input></td>
+            <td><input id='txtLogin'></input></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type='password'></input></td>
+            <td><input id='txtPassword' type='password'></input></td>
         </tr>
         <tr>
-            <td></td>
-            <td class='tdButtonLogin'><button class='imgButtonSmall' id='btnValidateLogin'><img/></button></td>
+            <td colspan='2' class='tdButtonLogin'>
+                <button class='imgButtonSmall' id='btnCreateLogin'><img/></button>
+                <button class='imgButtonSmall' id='btnValidateLogin'><img/></button>
+            </td>
         </tr>
     </table>
 </div>
+<script>
+    var homePage = {
+        showPopinSettings: () => {
+            popinManager.load('OK').done(() => {
+                pageManager.renderElement('settings/settingsPage', null, 'tdPopinContent').done(() => {
+                    popinManager.show(); 
+                });
+            });
+        },
+        settingsExportData: () => {
+            let html = "<textarea id='txtSettingsData'></textarea><br/><button onclick='homePage.validateExportData()'>Fermer</button>";
+            $('#divSettingsData').html(html);
+        },
+        validateExportData: () => {
+            $('#divSettingsData').html("");
+        }
+    }
+</script>
