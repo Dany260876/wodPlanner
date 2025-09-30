@@ -6,11 +6,13 @@
         "js/classes/exercice.js",
         "js/classes/zone.js",
         "js/classes/wod.js",
+        "js/classes/login.js",
         "js/managers/statisticsManager.js",
         "js/managers/dataManager.js",
         "js/managers/filterManager.js",
         "js/managers/pageManager.js",
-        "js/managers/popinManager.js"
+        "js/managers/popinManager.js",
+        "js/managers/profileManager.js"
     ],
     "pages": [
         {

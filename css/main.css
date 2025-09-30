@@ -89,9 +89,14 @@ textarea#txtSettingsData {
     font-variant: petite-caps;
     font-size: 16px; 
 }
-
 #divSettingsContent td {
     font-size: 12px;
+}
+.tdMessageLogin {
+    font-size: 10px;
+    top: -25px;
+    position: relative;
+    font-weight: bold;
 }
 
 /* 
@@ -100,7 +105,7 @@ textarea#txtSettingsData {
 
 .tblFooterMenu {
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 .tblFooterMenu td {
     width: 33%
@@ -125,7 +130,7 @@ button {
 }
 .imgButtonBig {
     font-size: 10px;
-    background-color: #fdfdfd;
+    background-color: #ffffff;
     min-width: 80px;
     min-height: 60px;
 }
@@ -209,8 +214,11 @@ button {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14L22 22M16 9C16 12.866 12.866 16 9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9Z" stroke="grey" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     width: 20px;
 }
-#btnValidateLogin img {
-    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.9506 11C21.9833 11.3289 22 11.6625 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C13.4222 2 14.7751 2.2969 16 2.83209M9 11L12 14L22 4" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+#btnValidateLogin.disconnected img {
+    content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 12H7M17 12L13 8M17 12L13 16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="darkcyan" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+#btnValidateLogin.connected img {
+    content: url('data:image/svg+xml,<svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 7.63636L14 4.5C14 4.22386 13.7761 4 13.5 4L4.5 4C4.22386 4 4 4.22386 4 4.5L4 19.5C4 19.7761 4.22386 20 4.5 20L13.5 20C13.7761 20 14 19.7761 14 19.5L14 16.3636" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12L21 12M21 12L18.0004 8.5M21 12L18 15.5" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 #btnCreateLogin img {
     content: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V16M16 12H8M6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3Z" stroke="royalblue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
