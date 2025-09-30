@@ -52,14 +52,10 @@ var dataManager = {
     },
 	getDataFromProfile: (name) => {
 		let result = $.Deferred();
-		
-		let currentProfile = window.localStorage.getItem('currentProfile');
-		if (!currentProfile) currentProfile = 'defaultProfile';
-		let valueString = window.localStorage.getItem(currentProfile);
-		let objData = JSON.parse(valueString);
-		if (objData && objData[name]) {
+		let objData = profileManager.getCurrentProfile();
+		if (objData.content && objData.content[name]) {
 			let listData = [];
-			objData[name].forEach((d) => {
+			objData.content[name].forEach((d) => {
 				if (name=='customExerc') {
 					listData.push(new Exercice(d.id, d.nom, d.categorie_id, d.zone_du_corps_id, d.difficulte_id, d.description, true, d.etapes, d.unite));
 				}
@@ -76,22 +72,12 @@ var dataManager = {
 		else {
 			result.resolve([]);
 		}
-
 		return result.promise();
 	},
-	writeDataToProfile: (name, data) => {
+	writeDataToProfile: (key, value) => {
 		let result = $.Deferred();
-		let currentProfile = window.localStorage.getItem('currentProfile');
-		if (!currentProfile) currentProfile = 'defaultProfile';
-		
-		let valueString = window.localStorage.getItem(currentProfile);
-		let objData = JSON.parse(valueString);
-		if (!objData) objData = {};
-		
-		objData[name] = data;
-		window.localStorage[currentProfile] = JSON.stringify(objData);
+		profileManager.writeCurrentProfile(key, value);	
 		result.resolve(true);
-	
 		return result.promise();
 	},
 	getCategories: () => {

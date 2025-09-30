@@ -18,7 +18,7 @@
         currentWod : {},
         showRecentList: () => {
             // get recents and display content
-            dataManager.getDataFromStorage('wodRecent').done((data) => {
+            dataManager.getRecentWods().done((data) => {
                 pageManager.renderElement('wod/listRecentWod',data,'divContent');  
             });
         },

@@ -10,9 +10,13 @@
         </tr>
         <tr>
             <td colspan='2' class='tdButtonLogin'>
-                <button class='imgButtonSmall' id='btnCreateLogin'><img/></button>
-                <button class='imgButtonSmall' id='btnValidateLogin'><img/></button>
+                <button class='imgButtonSmall' id='btnCreateLogin' onclick='homePage.createLogin()'><img/></button>
+                <button class='imgButtonSmall [{profileManager.getLoginStatus()}]' id='btnValidateLogin' onclick='homePage.validateLogin()'><img/></button>
             </td>
+        </tr>
+        <tr>
+            <td class='tdMessageLogin'></td>
+            <td></td>
         </tr>
     </table>
 </div>
@@ -31,6 +35,38 @@
         },
         validateExportData: () => {
             $('#divSettingsData').html("");
+        },
+        validateLogin: () => {
+            // connect
+            if ($(".disconnected").length>0) {
+                let login = $('#txtLogin').val();
+                let pwd = $('#txtPassword').val();
+                profileManager.connectProfile(login, pwd).done(() => {
+                    $('#txtLogin').val('');
+                    $('#txtPassword').val('');
+                    $(".tdMessageLogin").html('Connecté');
+                    $('#btnValidateLogin').toggleClass(['connected','disconnected']);
+                }).fail((erreur) => {
+                    $(".tdMessageLogin").html(erreur);
+                });   
+            }
+            else {
+                // disconnect
+                profileManager.disconnectProfile();
+                $(".tdMessageLogin").html('Déconnecté');
+                $('#btnValidateLogin').toggleClass(['connected','disconnected']);
+            }
+        },
+        createLogin: () => {
+            let login = $('#txtLogin').val();
+            let pwd = $('#txtPassword').val();
+            profileManager.createNewProfile(login, pwd).done(() => {
+                $(".tdMessageLogin").html('Profil créé avec succès');
+                $('#txtLogin').val('');
+                $('#txtPassword').val('');
+            }).fail((erreur) => {
+                $(".tdMessageLogin").html(erreur);
+            });
         }
     }
 </script>
