@@ -118,5 +118,44 @@ var profileManager = {
 			return 'connected';
 		else
 			return 'disconnected';
+	},
+	restoreProfile: (data) => {
+		let result = $.Deferred();
+		try {
+			let jsonData = atob(data);
+			let importedProfile = JSON.parse(jsonData);
+			let found = false;
+			
+			// profiles and replace with imported
+			let listeProfiles = profileManager.getProfiles();			
+			listeProfiles.forEach((profile, index) => {
+				if (profile.name==importedProfile.name) {
+					listeProfiles[index] = importedProfile;
+					found = true;
+				}
+			});
+			// if !found, add data & save
+			if (!found) listeProfiles.push(importedProfile);
+			window.localStorage['wodProfiles'] = JSON.stringify(listeProfiles);
+			
+			result.resolve();
+		}
+		catch(erreur) {
+			result.reject(erreur);
+		}
+		return result.promise();
+	},
+	restoreProfiles: (data) => {
+		let result = $.Deferred();
+		try {
+			let jsonData = atob(data);
+			let importedProfiles = JSON.parse(jsonData);		
+			window.localStorage['wodProfiles'] = JSON.stringify(importedProfiles);
+			result.resolve(importedProfiles.length);
+		}
+		catch(erreur) {
+			result.reject(erreur);
+		}
+		return result.promise();
 	}
 };
