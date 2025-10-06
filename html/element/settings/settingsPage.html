@@ -1,15 +1,18 @@
 <div id='divSettingsContent'>
-    <div class='tcSettingsHeader'>Données de profil</div>
+    <div class='divSettingsHeader'>Liste des profils</div>
     <hr/>
-    <table>
-        <tr>
-            <td>- Exporter le profil</td>
-            <td><button onclick='homePage.settingsExportData()'><img/><br/>OK</button></td>
-        </tr>
-        <tr>
-            <td>- Importer un profil</td>
-            <td><button onclick='homePage.settingsImportData()'><img/><br/>OK</button></td>
-        </tr>
+    [[
+    <p class='pDetailsProfil'>[object.name]</p>
+    <ul>
+        <li>[object.dateLogin]</li>
+        <li>[object.nbExercices] exercices créés</li>
+        <li>[object.nbWod] Wod exécutés</li>
+    </ul>
+    ]]
+    <br/>
+    <div class='divSettingsHeader'>Données du profil courant</div>
+    <hr/>
+    <table class='tblDetailSettings'>
         <tr>
             <td>- Effacer l'historique des WOD</td>
             <td><button><img/><br/>OK</button></td>
@@ -20,9 +23,9 @@
         </tr>
     </table>
     <br/>
-    <div class='tcSettingsHeader'>Données de l'application</div>
+    <div class='divSettingsHeader'>Données de l'application</div>
     <hr/>
-    <table>
+    <table class='tblDetailSettings'>
         <tr>
             <td>- Exporter les données</td>
             <td><button onclick='homePage.settingsExportAllData()'><img/><br/>OK</button></td>
