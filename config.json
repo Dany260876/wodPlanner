@@ -32,6 +32,12 @@
             "page": "exoPage",
             "header": "headerExoPage",
             "footer": "footerMenuExercices"
+        },
+        {
+            "name": "stats",
+            "page": "statsPage",
+            "header": "headerStatsPage",
+            "footer": "footerMenuStats"
         }
     ]
 }

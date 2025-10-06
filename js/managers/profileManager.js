@@ -119,32 +119,6 @@ var profileManager = {
 		else
 			return 'disconnected';
 	},
-	restoreProfile: (data) => {
-		let result = $.Deferred();
-		try {
-			let jsonData = atob(data);
-			let importedProfile = JSON.parse(jsonData);
-			let found = false;
-			
-			// profiles and replace with imported
-			let listeProfiles = profileManager.getProfiles();			
-			listeProfiles.forEach((profile, index) => {
-				if (profile.name==importedProfile.name) {
-					listeProfiles[index] = importedProfile;
-					found = true;
-				}
-			});
-			// if !found, add data & save
-			if (!found) listeProfiles.push(importedProfile);
-			window.localStorage['wodProfiles'] = JSON.stringify(listeProfiles);
-			
-			result.resolve();
-		}
-		catch(erreur) {
-			result.reject(erreur);
-		}
-		return result.promise();
-	},
 	restoreProfiles: (data) => {
 		let result = $.Deferred();
 		try {
@@ -157,5 +131,27 @@ var profileManager = {
 			result.reject(erreur);
 		}
 		return result.promise();
+	},
+	getDetailedProfiles: () => {
+		let results = [];
+		let listeProfiles = profileManager.getProfiles();		
+
+		// build result details
+		listeProfiles.forEach((profile,index) => {
+			let obj = new injectableObject();
+			obj.name = profile.name;
+			obj.nbExercices = 0;
+			obj.nbWod = 0;
+			obj.dateLogin = "Aucune connexion";
+			if (profile.content) {
+				if (profile.content.customExerc) obj.nbExercices = profile.content.customExerc.length;
+				if (profile.content.wodRecent) obj.nbWod = profile.content.wodRecent.length;
+			}
+			if (profile.loginInfos && profile.loginInfos.dateLogin) {
+				obj.dateLogin = "Connecté le " + profile.loginInfos.dateLogin;
+			}
+			results.push(obj);
+		});
+		return results;
 	}
 };
