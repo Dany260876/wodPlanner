@@ -23,18 +23,12 @@
 <script>
     var homePage = {
         showPopinSettings: () => {
+            let data = profileManager.getDetailedProfiles();
             popinManager.load('OK').done(() => {
-                pageManager.renderElement('settings/settingsPage', null, 'tdPopinContent').done(() => {
+                pageManager.renderElement('settings/settingsPage', data, 'tdPopinContent').done(() => {
                     popinManager.show(); 
                 });
             });
-        },
-        settingsExportData: () => {
-            let currentProfile = profileManager.getCurrentProfile();
-            let encodedProfile = JSON.stringify(currentProfile);
-            encodedProfile = btoa(encodedProfile);
-            let html = "<textarea id='txtSettingsData'>" + encodedProfile + "</textarea><br/><button onclick='homePage.closeSettingsData()'>Fermer</button>";
-            $('#divSettingsData').html(html);
         },
         settingsExportAllData: () => {
             let currentProfile = profileManager.getProfiles();
@@ -46,21 +40,9 @@
         closeSettingsData: () => {
             $('#divSettingsData').html("");
         },
-        settingsImportData: () => {
-            let html = "<textarea id='txtSettingsData'></textarea><br/><button onclick='homePage.validateImportData()'>Valider</button>&nbsp;<button onclick='homePage.closeSettingsData()'>Fermer</button>";
-            $('#divSettingsData').html(html);
-        },
         settingsImportAllData: () => {
             let html = "<textarea id='txtSettingsData'></textarea><br/><button onclick='homePage.validateImportAllData()'>Valider</button>&nbsp;<button onclick='homePage.closeSettingsData()'>Fermer</button>";
             $('#divSettingsData').html(html);
-        },
-        validateImportData: () => {
-            let importedValue = $('#txtSettingsData').val();
-            profileManager.restoreProfile(importedValue).done(() => {
-                $('#divSettingsData').html("Profil importé avec succès !");
-            }).fail((erreur) => {
-                $('#divSettingsData').html("Erreur : " + erreur);
-            });
         },
         validateImportAllData: () => {
             let importedValue = $('#txtSettingsData').val();
