@@ -37,6 +37,15 @@
             let html = "<textarea id='txtSettingsData'>" + encodedProfile + "</textarea><br/><button onclick='homePage.closeSettingsData()'>Fermer</button>";
             $('#divSettingsData').html(html);
         },
+        settingsDeleteAllData: () => {
+            popinManager.setCallbackFunction('homePage.validateSettingsDeleteAllData()');
+            popinManager.showConfirmation("Voulez-vous supprimer toutes les données ?");
+        },
+        validateSettingsDeleteAllData: () => {
+            window.localStorage.removeItem('wodProfiles');
+            window.localStorage.removeItem('currentWodProfile');
+            pageManager.navigateTo('home');
+        },
         closeSettingsData: () => {
             $('#divSettingsData').html("");
         },
