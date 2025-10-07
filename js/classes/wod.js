@@ -18,6 +18,10 @@ class Wod extends injectableObject {
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 	}
+	getShortDate() {
+		if (!this.dateDebut) return "";
+		return new Date(this.dateDebut).toLocaleDateString();
+	}
 	getDateDebut() {
 		if (!this.dateDebut) return "";
 		return new Date(this.dateDebut).toLocaleDateString() + " " + new Date(this.dateDebut).toLocaleTimeString();
